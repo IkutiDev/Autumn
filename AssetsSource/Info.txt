@@ -1,0 +1,1 @@
+Put any assets you want to have inside version control. It can be PSD/Krita/Affinity/whatever 2d files or even 3d blend files. Just remember to not have too big files here!

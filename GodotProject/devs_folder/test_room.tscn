@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://c3dnhbnkufr1k"]
+
+[ext_resource type="Script" path="res://devs_folder/test_room.gd" id="1_rbs4n"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_fq4tc"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="3_eqn01"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7mpcj"]
+sky_top_color = Color(0.678431, 0.52549, 0.482353, 1)
+sky_horizon_color = Color(0.74902, 0.596078, 0.4, 1)
+sky_curve = 0.504537
+
+[sub_resource type="Sky" id="Sky_t2k6f"]
+sky_material = SubResource("ProceduralSkyMaterial_7mpcj")
+
+[sub_resource type="Environment" id="Environment_43bc6"]
+background_mode = 2
+sky = SubResource("Sky_t2k6f")
+sdfgi_enabled = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_mls6d"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0orib"]
+
+[node name="TestRoom" type="Node3D"]
+script = ExtResource("1_rbs4n")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(14.1853, 0, 0, 0, 1, 0, 0, 0, 14.071, 0, 0, 0)
+use_collision = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.661277, 0.435124, -0.611049, 0, 0.814577, 0.580055, 0.750142, -0.383577, 0.538661, -8.48625, 8.07846, 7.84373)
+
+[node name="PhantomCameraHost" type="Node" parent="Camera3D"]
+script = ExtResource("2_fq4tc")
+
+[node name="PhantomCamera" type="Node3D" parent="."]
+transform = Transform3D(0.661277, 0.435124, -0.611049, 0, 0.814577, 0.580055, 0.750142, -0.383577, 0.538661, -8.48625, 8.07846, 7.84373)
+script = ExtResource("3_eqn01")
+priority_override = false
+priority = 0
+follow_mode = 0
+look_at_mode = 0
+tween_parameters = null
+tween_on_load = true
+inactive_update_mode = 0
+camera_3D_resource = null
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_43bc6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.285623, -0.845874, 0.450464, -0.435209, 0.533267, 0.72541, -0.853822, 0.0111472, -0.520445, 6.65434, 6.9806, -3.82677)
+shadow_enabled = true
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.15703, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("SphereMesh_mls6d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("SphereShape3D_0orib")

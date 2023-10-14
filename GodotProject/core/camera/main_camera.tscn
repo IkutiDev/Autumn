@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://cpjwbbk1d22ky"]
+
+[ext_resource type="Script" path="res://core/camera/main_camera.gd" id="1_w8s85"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="1_yq3eg"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_72cww"]
+
+[sub_resource type="Curve3D" id="Curve3D_f27me"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, -21.67, 0, 0, 0, 0, 0, 0, 0, 0, 10.25),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="MainCamera" type="Node3D"]
+script = ExtResource("1_w8s85")
+
+[node name="PhantomCamera" type="Node3D" parent="."]
+transform = Transform3D(0.999843, -0.0159435, 0.00709851, 0, 0.406734, 0.913542, -0.0174523, -0.9134, 0.406673, 0.251, 13.555, 5.36721)
+script = ExtResource("1_yq3eg")
+priority_override = false
+priority = 0
+follow_mode = 4
+follow_target = NodePath("../../Player/CameraFollowPoint")
+follow_path = NodePath("../CameraPath3D")
+follow_parameters/damping = false
+look_at_mode = 0
+tween_parameters = null
+tween_on_load = true
+inactive_update_mode = 0
+camera_3D_resource = null
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.999843, -0.0159435, 0.00709851, 0, 0.406734, 0.913542, -0.0174523, -0.9134, 0.406673, 0.251, 13.555, 5.36721)
+
+[node name="PhantomCameraHost" type="Node" parent="Camera3D"]
+script = ExtResource("2_72cww")
+
+[node name="CameraPath3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.251, 13.555, 6.867)
+curve = SubResource("Curve3D_f27me")

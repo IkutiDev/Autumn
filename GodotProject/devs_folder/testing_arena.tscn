@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://dx1uxes5xodp0"]
+
+[ext_resource type="PackedScene" uid="uid://b3x08bo1cbyvy" path="res://devs_folder/dummy_player.tscn" id="1_l3tpx"]
+[ext_resource type="PackedScene" uid="uid://dr50yhmmqdnsq" path="res://devs_folder/interactable.tscn" id="2_1tx76"]
+[ext_resource type="PackedScene" uid="uid://hj2848tf8yp0" path="res://devs_folder/cookbook_shelf.tscn" id="3_issyj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yj2y7"]
+albedo_color = Color(0.278431, 0.168627, 0.0941176, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0fr0a"]
+material = SubResource("StandardMaterial3D_yj2y7")
+size = Vector2(20, 20)
+
+[node name="TestingArena" type="Node3D"]
+
+[node name="DummyPlayer" parent="." instance=ExtResource("1_l3tpx")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 3, 4)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_0fr0a")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.009, 0)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 20.0
+omni_attenuation = 0.170755
+
+[node name="Interactable" parent="." instance=ExtResource("2_1tx76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.21512, 0.598585, -3.68917)
+
+[node name="Interactable2" parent="." instance=ExtResource("2_1tx76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.26105, 0.578264, 1.35861)
+
+[node name="Interactable3" parent="." instance=ExtResource("2_1tx76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.26105, 0.578264, 1.35861)
+
+[node name="CookbookShelf" parent="." instance=ExtResource("3_issyj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -1)

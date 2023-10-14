@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cpjwbbk1d22ky"]
+[gd_scene load_steps=5 format=3 uid="uid://bj2d3bfp48e8u"]
 
-[ext_resource type="Script" path="res://core/camera/main_camera.gd" id="1_w8s85"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="1_yq3eg"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_72cww"]
+[ext_resource type="Script" path="res://core/camera/main_camera.gd" id="1_gx4xc"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="2_mm1y1"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_qcbut"]
 
 [sub_resource type="Curve3D" id="Curve3D_f27me"]
 _data = {
@@ -12,16 +12,16 @@ _data = {
 point_count = 2
 
 [node name="MainCamera" type="Node3D"]
-script = ExtResource("1_w8s85")
+script = ExtResource("1_gx4xc")
 
 [node name="PhantomCamera" type="Node3D" parent="."]
-transform = Transform3D(0.999843, -0.0159435, 0.00709851, 0, 0.406734, 0.913542, -0.0174523, -0.9134, 0.406673, 0.251, 13.555, 5.36721)
-script = ExtResource("1_yq3eg")
+transform = Transform3D(0.999843, -0.0159435, 0.00709851, 0, 0.406734, 0.913542, -0.0174523, -0.9134, 0.406673, 2, 11.5036, 4.86721)
+script = ExtResource("2_mm1y1")
 priority_override = false
 priority = 0
-follow_mode = 4
-follow_target = NodePath("../../Player/CameraFollowPoint")
-follow_path = NodePath("../CameraPath3D")
+follow_mode = 2
+follow_target = NodePath("../../Player")
+follow_parameters/target_offset = Vector3(0, 11, 5.5)
 follow_parameters/damping = false
 look_at_mode = 0
 tween_parameters = null
@@ -30,10 +30,10 @@ inactive_update_mode = 0
 camera_3D_resource = null
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.999843, -0.0159435, 0.00709851, 0, 0.406734, 0.913542, -0.0174523, -0.9134, 0.406673, 0.251, 13.555, 5.36721)
+transform = Transform3D(0.999843, -0.0159435, 0.00709851, 0, 0.406734, 0.913542, -0.0174523, -0.9134, 0.406673, 2, 11.5036, 4.86721)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
-script = ExtResource("2_72cww")
+script = ExtResource("3_qcbut")
 
 [node name="CameraPath3D" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.251, 13.555, 6.867)

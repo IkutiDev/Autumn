@@ -1,11 +1,10 @@
 extends Node
 
+@export var main_menu_scene : PackedScene
+@export var gameplay_scene : PackedScene
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func change_to_gameplay_scene() -> void:
+	get_tree().change_scene_to_packed(gameplay_scene)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func change_to_main_menu_scene() -> void:
+	get_tree().change_scene_to_packed(main_menu_scene)

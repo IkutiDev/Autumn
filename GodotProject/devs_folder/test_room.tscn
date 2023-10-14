@@ -1,17 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://c3dnhbnkufr1k"]
+[gd_scene load_steps=19 format=3 uid="uid://c3dnhbnkufr1k"]
 
 [ext_resource type="Script" path="res://devs_folder/test_room.gd" id="1_rbs4n"]
-[ext_resource type="Script" path="res://core/camera/main_camera.gd" id="2_tioi5"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="3_5pxbg"]
+[ext_resource type="PackedScene" uid="uid://bj2d3bfp48e8u" path="res://core/camera/main_camera.tscn" id="2_blucc"]
 [ext_resource type="PackedScene" uid="uid://b7mec423sxgw7" path="res://characters/player/player.tscn" id="4_bpekg"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_o5gto"]
-
-[sub_resource type="Curve3D" id="Curve3D_f27me"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, -21.67, 0, 0, 0, 0, 0, 0, 0, 0, 10.25),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7mpcj"]
 sky_top_color = Color(0.678431, 0.52549, 0.482353, 1)
@@ -72,34 +63,6 @@ script = ExtResource("1_rbs4n")
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(14.1853, 0, 0, 0, 1, 0, 0, 0, 14.071, 0, 0, 0)
 use_collision = true
-
-[node name="MainCamera" type="Node3D" parent="."]
-script = ExtResource("2_tioi5")
-
-[node name="PhantomCamera" type="Node3D" parent="MainCamera"]
-transform = Transform3D(0.999843, -0.0159435, 0.00709851, 0, 0.406734, 0.913542, -0.0174523, -0.9134, 0.406673, 2, 11.5036, 4.86721)
-script = ExtResource("3_5pxbg")
-priority_override = false
-priority = 0
-follow_mode = 2
-follow_target = NodePath("../../Player")
-follow_parameters/target_offset = Vector3(0, 11, 5.5)
-follow_parameters/damping = false
-look_at_mode = 0
-tween_parameters = null
-tween_on_load = true
-inactive_update_mode = 0
-camera_3D_resource = null
-
-[node name="Camera3D" type="Camera3D" parent="MainCamera"]
-transform = Transform3D(0.999843, -0.0159435, 0.00709851, 0, 0.406734, 0.913542, -0.0174523, -0.9134, 0.406673, 2, 11.5036, 4.86721)
-
-[node name="PhantomCameraHost" type="Node" parent="MainCamera/Camera3D"]
-script = ExtResource("4_o5gto")
-
-[node name="CameraPath3D" type="Path3D" parent="MainCamera"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.251, 13.555, 6.867)
-curve = SubResource("Curve3D_f27me")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_43bc6")
@@ -212,3 +175,13 @@ shape = SubResource("ConcavePolygonShape3D_whjr3")
 
 [node name="Player" parent="." instance=ExtResource("4_bpekg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.50363, -0.632794)
+
+[node name="MainCamera" parent="." instance=ExtResource("2_blucc")]
+
+[node name="PhantomCamera" parent="MainCamera" index="0"]
+transform = Transform3D(0.999843, -0.0159435, 0.00709851, 0, 0.406734, 0.913542, -0.0174523, -0.9134, 0.406673, 2, 11.5036, 4.86721)
+
+[node name="Camera3D" parent="MainCamera" index="1"]
+transform = Transform3D(0.999843, -0.0159435, 0.00709851, 0, 0.406734, 0.913542, -0.0174523, -0.9134, 0.406673, 2, 11.5036, 4.86721)
+
+[editable path="MainCamera"]

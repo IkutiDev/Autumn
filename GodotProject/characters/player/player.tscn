@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://b7mec423sxgw7"]
+[gd_scene load_steps=12 format=3 uid="uid://b7mec423sxgw7"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_xoabe"]
-[ext_resource type="PackedScene" uid="uid://dbbveu3jqy6rb" path="res://witch_body.glb" id="2_tq27x"]
+[ext_resource type="PackedScene" uid="uid://df75fuhrjlp56" path="res://characters/player/witch_body.glb" id="2_vt84b"]
+[ext_resource type="PackedScene" uid="uid://ciwrc3cnluwux" path="res://ktosox/holding_hat.tscn" id="3_lrwu0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iq03j"]
 
@@ -26,6 +27,8 @@ albedo_color = Color(0, 0, 0, 1)
 material = SubResource("StandardMaterial3D_ff0df")
 
 [node name="Player" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("1_xoabe")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -50,5 +53,8 @@ mesh = SubResource("CylinderMesh_vka7o")
 transform = Transform3D(0.657033, 0, 0, 0, 1.01139, 0, 0, 0, -0.337407, 0, 1.16272, 0)
 mesh = SubResource("PrismMesh_erkg0")
 
-[node name="witch_body" parent="." instance=ExtResource("2_tq27x")]
+[node name="witch_body" parent="." instance=ExtResource("2_vt84b")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="HoldingHat" parent="." instance=ExtResource("3_lrwu0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1, 0)

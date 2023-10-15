@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyudgpn21x05w"]
+
+[ext_resource type="PackedScene" uid="uid://ci2spbuhp14g4" path="res://world/garden.glb" id="1_0sbuq"]
+
+[node name="garden" instance=ExtResource("1_0sbuq")]
+
+[node name="Cube" parent="." index="1"]
+visible = false
+
+[node name="Sun" parent="Empty" index="62"]
+visible = false

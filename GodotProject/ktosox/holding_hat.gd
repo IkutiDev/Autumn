@@ -51,7 +51,9 @@ func update_selection(): # each time an object enters/leave the interaction box 
 	focusedEnitity = winner
 	pass
 
-
+func get_held_item():
+	return heldItem
+	pass
 
 func _on_interaction_box_body_entered(body):
 	update_selection()

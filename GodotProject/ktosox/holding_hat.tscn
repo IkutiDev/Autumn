@@ -14,7 +14,7 @@ radial_segments = 16
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b0tp1"]
 
-[node name="HoldingHat" type="Node3D"]
+[node name="HoldingHat" type="Node3D" groups=["Hat"]]
 script = ExtResource("1_als87")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

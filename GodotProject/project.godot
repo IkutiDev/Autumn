@@ -95,6 +95,15 @@ move_down_joystick={
 ]
 }
 
+grab={
+"deadzone": 0.5,
+"events": []
+}
+drop={
+"deadzone": 0.5,
+"events": []
+}
+
 [physics]
 
 3d/physics_engine="JoltPhysics3D"

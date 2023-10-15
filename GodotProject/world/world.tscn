@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://dtbmjdiy51vqd"]
+
+[ext_resource type="PackedScene" uid="uid://ci2spbuhp14g4" path="res://world/garden.glb" id="1_l2mxk"]
+[ext_resource type="PackedScene" uid="uid://b7mec423sxgw7" path="res://characters/player/player.tscn" id="2_uwq1c"]
+[ext_resource type="PackedScene" uid="uid://bj2d3bfp48e8u" path="res://core/camera/main_camera.tscn" id="3_nwjdx"]
+[ext_resource type="PackedScene" uid="uid://brbksp2l0t2o3" path="res://entities/pot/pot.tscn" id="4_aaryu"]
+[ext_resource type="PackedScene" uid="uid://bmud5otvo6pu6" path="res://entities/items/pumpkin.tscn" id="5_obnte"]
+[ext_resource type="PackedScene" uid="uid://dldv11w5gwe25" path="res://entities/items/herb.tscn" id="6_sdr6o"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h46wa"]
+size = Vector3(49.5806, 1, 49.6635)
+
+[node name="World" type="Node3D"]
+
+[node name="garden" parent="." instance=ExtResource("1_l2mxk")]
+
+[node name="Cube" parent="garden" index="1"]
+visible = false
+
+[node name="Camera" parent="garden" index="2"]
+visible = false
+
+[node name="Sun_001" parent="garden" index="3"]
+visible = false
+
+[node name="Sun" parent="garden/Empty" index="62"]
+visible = false
+
+[node name="Player" parent="." instance=ExtResource("2_uwq1c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 2.09374)
+
+[node name="MainCamera" parent="." instance=ExtResource("3_nwjdx")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.725194, 0)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.130478, 0, -1.73758)
+shape = SubResource("BoxShape3D_h46wa")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.1975, 0)
+omni_range = 50.0
+
+[node name="Pot" parent="." instance=ExtResource("4_aaryu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.884656, -0.225194, -4.21428)
+
+[node name="ItemBase" parent="." instance=ExtResource("5_obnte")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4798, -0.225194, -1.22833)
+
+[node name="ItemBase2" parent="." instance=ExtResource("5_obnte")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.985187, -0.225194, -1.08951)
+
+[node name="ItemBase3" parent="." instance=ExtResource("6_sdr6o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8337, -0.225194, -1.58108)
+
+[node name="ItemBase4" parent="." instance=ExtResource("6_sdr6o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.490708, -0.225194, -0.826445)
+
+[editable path="garden"]

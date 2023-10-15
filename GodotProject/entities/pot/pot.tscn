@@ -1,8 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://brbksp2l0t2o3"]
+[gd_scene load_steps=13 format=3 uid="uid://brbksp2l0t2o3"]
 
 [ext_resource type="Script" path="res://entities/pot/pot.gd" id="1_gv73w"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_233pv"]
+albedo_color = Color(0.752941, 0.956863, 0.392157, 1)
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_fp01g"]
+material = SubResource("StandardMaterial3D_233pv")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k8haf"]
 albedo_color = Color(0.168627, 0.168627, 0.168627, 1)

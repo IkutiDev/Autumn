@@ -34,7 +34,8 @@ func grab(item:RigidBody3D):
 func yeet(item:RigidBody3D):
 	item.reparent(get_tree().current_scene)
 	item.freeze = false
-	item.apply_central_impulse(Vector3(3,0,0).rotated(Vector3(0,1,0),rotation.y))
+
+	item.apply_central_impulse(Vector3(3,0,0).rotated(Vector3(0,1,0),global_rotation.y))
 	heldItem = null
 	pass
 

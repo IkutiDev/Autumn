@@ -9,17 +9,22 @@ func _ready():
 	pass # Replace with function body.
 
 func _input(event):
-	if event.is_action_pressed("ui_accept"):
+	if event.is_action_pressed("drop"):
 		if heldItem != null:
 			yeet(heldItem)
-			return
+	if event.is_action_pressed("interact"):
 		if is_instance_valid(focusedEnitity):
 			if focusedEnitity.is_in_group("Item"):
-				grab(focusedEnitity)
+				if heldItem == null:
+					grab(focusedEnitity)
+			else:
+				focusedEnitity.interact()
 
 func grab(item:RigidBody3D):
 	if heldItem != null:
 		print("no room to grab")
+		return
+	print("I can haz ",item.type)
 	item.freeze = true
 	item.reparent($ItemHolder/Slot1,false)
 	item.set_deferred("position",Vector3.ZERO)
@@ -57,6 +62,7 @@ func get_held_item():
 
 func _on_interaction_box_body_entered(body):
 	update_selection()
+	print(body)
 	pass # Replace with function body.
 
 

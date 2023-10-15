@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://brbksp2l0t2o3"]
+[gd_scene load_steps=12 format=3 uid="uid://brbksp2l0t2o3"]
 
 [ext_resource type="Script" path="res://entities/pot/pot.gd" id="1_gv73w"]
 
@@ -24,13 +24,14 @@ height = 0.2
 
 [sub_resource type="Curve3D" id="Curve3D_rwhdb"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.088, 1.085, 0.8, 0, 0.364118, -0.0282001, 0, -0.364118, 0.0282001, 0, 1.024, 0, 0, 0, 0, 0, 0, 0, 0.018, 0.37, 0),
+"points": PackedVector3Array(0, 0.364118, -0.0282001, 0, 0, 0, 0, 1, 0.8, 0, 0.364118, -0.0282001, 0, -0.364118, 0.0282001, 0, 1.336, 0, 0, 0, 0, 0, -0.364118, 0.0282001, 0.018, 0.37, 0),
 "tilts": PackedFloat32Array(0, 0, 0)
 }
 point_count = 3
 
 [sub_resource type="Animation" id="Animation_pc7ff"]
-resource_name = "Move"
+resource_name = "EatAnimation"
+length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -38,8 +39,8 @@ tracks/0/path = NodePath("Grab:progress_ratio")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 1),
-"transitions": PackedFloat32Array(2, 0.5, 1),
+"times": PackedFloat32Array(0, 0.3, 0.8),
+"transitions": PackedFloat32Array(2.92817, 0.267944, 1),
 "update": 0,
 "values": [0.0, 0.5, 1.0]
 }
@@ -61,14 +62,22 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qbn4y"]
 _data = {
-"Move": SubResource("Animation_pc7ff"),
+"EatAnimation": SubResource("Animation_pc7ff"),
 "RESET": SubResource("Animation_1hhir")
 }
 
-[node name="Pot" type="StaticBody3D" groups=["Interact"]]
+[sub_resource type="SphereShape3D" id="SphereShape3D_tl50c"]
+radius = 0.575699
+
+[node name="Pot" type="RigidBody3D" groups=["Interact"]]
+collision_layer = 10
+collision_mask = 8
+freeze = true
+freeze_mode = 1
 script = ExtResource("1_gv73w")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.338057, 0)
 visible = false
 mesh = SubResource("PlaneMesh_fp01g")
 
@@ -89,6 +98,12 @@ libraries = {
 }
 
 [node name="Grab" type="PathFollow3D" parent="ItemPath"]
-transform = Transform3D(0.993999, -0.00826314, 0.109022, -4.65659e-10, 0.997094, 0.075572, -0.10934, -0.0751194, 0.991108, 0.088, 1.085, 0.8)
+transform = Transform3D(0.999991, 0, 0, 0, 0.921933, -0.387209, 0, 0.387212, 0.921927, 0, 1, 0.8)
+loop = false
 
-[connection signal="animation_finished" from="ItemPath/Mover" to="." method="_on_mover_animation_finished"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.536279, 0)
+shape = SubResource("SphereShape3D_tl50c")
+
+[node name="Output" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

@@ -19,8 +19,9 @@ func _exit_tree():
 
 func movement(movement_vector : Vector2) -> void:
 	
-	current_velocity.z = movement_vector.y * speed
-	current_velocity.x = movement_vector.x * speed
+	current_velocity.z = -movement_vector.x * speed
+	current_velocity.x = movement_vector.y * speed
+
 	
 	if current_velocity:
 		if Vector3.UP.cross(transform.origin + current_velocity - position).length() > 0:

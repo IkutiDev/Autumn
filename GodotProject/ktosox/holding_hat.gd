@@ -24,7 +24,7 @@ func grab(item:RigidBody3D):
 	if heldItem != null:
 		print("no room to grab")
 		return
-	print("I can haz ",item.type)
+
 	item.freeze = true
 	item.reparent($ItemHolder/Slot1,false)
 	item.set_deferred("position",Vector3.ZERO)
@@ -45,7 +45,8 @@ func update_selection(): # each time an object enters/leave the interaction box 
 	var validSelectables = []
 	for A in $InteractionBox.get_overlapping_bodies():
 		if A.select_is_valid():
-			validSelectables.push_back(A)
+			if A != heldItem:
+				validSelectables.push_back(A)
 	if validSelectables.size() == 0:
 		focusedEnitity = null
 		return
@@ -63,10 +64,11 @@ func get_held_item():
 
 func _on_interaction_box_body_entered(body):
 	update_selection()
-	print(body)
+
 	pass # Replace with function body.
 
 
 func _on_interaction_box_body_exited(body):
+
 	update_selection()
 	pass # Replace with function body.

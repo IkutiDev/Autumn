@@ -4,6 +4,7 @@
 
 [node name="TouchBox" type="Area3D" groups=["Touch"]]
 collision_layer = 0
+collision_mask = 4
 script = ExtResource("1_8dbhw")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

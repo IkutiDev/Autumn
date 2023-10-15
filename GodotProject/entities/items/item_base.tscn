@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://kqu0naaa3i62"]
+
+[ext_resource type="Script" path="res://entities/items/item_base.gd" id="1_roo1k"]
+[ext_resource type="Texture2D" uid="uid://c7w7fbjvnq0hp" path="res://icon.png" id="1_u4dni"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_equfn"]
+bounce = 0.4
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fgmb0"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="ItemBase" type="RigidBody3D" groups=["Interact", "Item"]]
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_equfn")
+script = ExtResource("1_roo1k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_fgmb0")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+billboard = 1
+texture = ExtResource("1_u4dni")

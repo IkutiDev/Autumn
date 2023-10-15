@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://ciwrc3cnluwux"]
+
+[ext_resource type="Script" path="res://ktosox/holding_hat.gd" id="1_als87"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_unngh"]
+albedo_color = Color(0.258824, 0.258824, 0.145098, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3g8n7"]
+material = SubResource("StandardMaterial3D_unngh")
+top_radius = 0.0
+bottom_radius = 0.04
+height = 1.0
+radial_segments = 16
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b0tp1"]
+
+[node name="HoldingHat" type="Node3D"]
+script = ExtResource("1_als87")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 0.4, 0, 0, 0, 2, 0, 0.486366, 0)
+mesh = SubResource("CylinderMesh_3g8n7")
+
+[node name="InteractionBox" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.71, 0.36, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionBox"]
+shape = SubResource("BoxShape3D_b0tp1")
+
+[node name="ItemHolder" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="Slot1" type="Marker3D" parent="ItemHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.432887, 0.0400158, 0)
+
+[node name="Slot2" type="Marker3D" parent="ItemHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01441, 0.0400158, -0.504825)
+
+[node name="Slot3" type="Marker3D" parent="ItemHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00853941, 0.0400158, 0.545957)
+
+[connection signal="body_entered" from="InteractionBox" to="." method="_on_interaction_box_body_entered"]
+[connection signal="body_exited" from="InteractionBox" to="." method="_on_interaction_box_body_exited"]

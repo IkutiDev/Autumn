@@ -32,7 +32,7 @@ _subresources={
 "materials": {
 "garden": {
 "use_external/enabled": true,
-"use_external/path": "res://garden.tres"
+"use_external/path": "res://world/garden.tres"
 }
 }
 }

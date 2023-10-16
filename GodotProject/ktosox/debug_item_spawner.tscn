@@ -1,25 +1,114 @@
-[gd_scene load_steps=5 format=3 uid="uid://8ngyjp5ihobj"]
+[gd_scene load_steps=13 format=3 uid="uid://8ngyjp5ihobj"]
 
 [ext_resource type="Script" path="res://ktosox/debug_item_spawner.gd" id="1_4nue0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bf48o"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mjp7q"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4qm64"]
+resource_local_to_scene = true
 transparency = 1
-albedo_color = Color(1, 1, 1, 0.0823529)
+albedo_color = Color(0.788235, 0.027451, 0.266667, 0.0823529)
+
+[sub_resource type="BoxMesh" id="BoxMesh_77c0h"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_4qm64")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fesan"]
+resource_local_to_scene = true
+transparency = 1
+albedo_color = Color(0, 0.513726, 0.227451, 0.0823529)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nwex6"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_fesan")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c6jc6"]
+resource_local_to_scene = true
+transparency = 1
+albedo_color = Color(1, 0.337255, 0.866667, 0.0823529)
 
 [sub_resource type="BoxMesh" id="BoxMesh_mqfvl"]
-material = SubResource("StandardMaterial3D_mjp7q")
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_c6jc6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p8ql5"]
+resource_local_to_scene = true
+transparency = 1
+albedo_color = Color(0.168627, 0.733333, 0.764706, 0.0823529)
+
+[sub_resource type="BoxMesh" id="BoxMesh_865q8"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_p8ql5")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_56l0v"]
+resource_local_to_scene = true
+transparency = 1
+albedo_color = Color(0.921569, 0.541176, 0.266667, 0.0823529)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8ebcw"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_56l0v")
 
 [node name="DebugItemSpawner" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.465129, 0)
 script = ExtResource("1_4nue0")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="AppleSpawner" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 4
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AppleSpawner"]
 shape = SubResource("BoxShape3D_bf48o")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AppleSpawner"]
+mesh = SubResource("BoxMesh_77c0h")
+
+[node name="MushroomSpawner" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MushroomSpawner"]
+shape = SubResource("BoxShape3D_bf48o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MushroomSpawner"]
+mesh = SubResource("BoxMesh_nwex6")
+
+[node name="MandrakeSpawner" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MandrakeSpawner"]
+shape = SubResource("BoxShape3D_bf48o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MandrakeSpawner"]
 mesh = SubResource("BoxMesh_mqfvl")
 
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[node name="FlowerSpawner" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FlowerSpawner"]
+shape = SubResource("BoxShape3D_bf48o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FlowerSpawner"]
+mesh = SubResource("BoxMesh_865q8")
+
+[node name="PumpkinSpawner" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PumpkinSpawner"]
+shape = SubResource("BoxShape3D_bf48o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PumpkinSpawner"]
+mesh = SubResource("BoxMesh_8ebcw")
+
+[connection signal="body_entered" from="AppleSpawner" to="." method="_on_apple_spawner_body_entered"]
+[connection signal="body_entered" from="MushroomSpawner" to="." method="_on_mushroom_spawner_body_entered"]
+[connection signal="body_entered" from="MandrakeSpawner" to="." method="_on_mandrake_spawner_body_entered"]
+[connection signal="body_entered" from="FlowerSpawner" to="." method="_on_flower_spawner_body_entered"]
+[connection signal="body_entered" from="PumpkinSpawner" to="." method="_on_pumpkin_spawner_body_entered"]

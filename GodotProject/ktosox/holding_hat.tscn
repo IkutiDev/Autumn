@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://ciwrc3cnluwux"]
+[gd_scene load_steps=8 format=3 uid="uid://ciwrc3cnluwux"]
 
 [ext_resource type="Script" path="res://ktosox/holding_hat.gd" id="1_als87"]
 
@@ -14,6 +14,92 @@ radial_segments = 16
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b0tp1"]
 size = Vector3(1.92385, 3.3763, 1.79652)
+
+[sub_resource type="Animation" id="Animation_kq2sx"]
+resource_name = "Wobble"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Slot1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.7, 2.8, 3.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.0434, 0.261766, 2.66864e-08), Vector3(1.043, 0.067, 0), Vector3(1.0434, 0.261766, 2.66864e-08), Vector3(1.043, 0.127, 0), Vector3(1.0434, 0.261766, 2.66864e-08)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Slot2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 1.2, 2.2, 3.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.01441, 0.281469, -1.19629), Vector3(0.014, 0.136, -1.196), Vector3(0.01441, 0.281469, -1.19629), Vector3(0.014, 0.351, -1.196)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Slot3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.7, 2.8, 3.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.0085394, 0.306676, 0.904257), Vector3(0.009, 0.342, 0.904), Vector3(0.009, 0.427, 0.904), Vector3(0.009, 0.142, 0.904), Vector3(0.0085394, 0.306676, 0.904257)]
+}
+
+[sub_resource type="Animation" id="Animation_dgwny"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Slot1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.0434, 0.261766, 2.66864e-08)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Slot2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.01441, 0.281469, -1.19629)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Slot3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.0085394, 0.306676, 0.904257)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u2wk6"]
+_data = {
+"RESET": SubResource("Animation_dgwny"),
+"Wobble": SubResource("Animation_kq2sx")
+}
 
 [node name="HoldingHat" type="Node3D" groups=["Hat"]]
 script = ExtResource("1_als87")
@@ -35,13 +121,19 @@ shape = SubResource("BoxShape3D_b0tp1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 
 [node name="Slot1" type="Marker3D" parent="ItemHolder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.432887, 0.0400158, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0434, 0.261766, 2.66864e-08)
 
 [node name="Slot2" type="Marker3D" parent="ItemHolder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01441, 0.0400158, -0.504825)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01441, 0.281469, -1.19629)
 
 [node name="Slot3" type="Marker3D" parent="ItemHolder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00853941, 0.0400158, 0.545957)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0085394, 0.306676, 0.904257)
+
+[node name="Wobbler" type="AnimationPlayer" parent="ItemHolder"]
+autoplay = "Wobble"
+libraries = {
+"": SubResource("AnimationLibrary_u2wk6")
+}
 
 [connection signal="body_entered" from="InteractionBox" to="." method="_on_interaction_box_body_entered"]
 [connection signal="body_exited" from="InteractionBox" to="." method="_on_interaction_box_body_exited"]

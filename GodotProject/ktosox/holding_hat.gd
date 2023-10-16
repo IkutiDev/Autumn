@@ -1,24 +1,33 @@
 extends Node3D
 
-var focusedEnitity = null
+# it is the hat that holds... items, in air, above the player's head
 
-var heldItem = null
+var focusedEnitity = null # what the ploayer is currently looking at
 
-# Called when the node enters the scene tree for the first time.
+var heldItem = null # 
+
 func _ready():
-	pass # Replace with function body.
+	InputManager.drop.connect(drop_action)
+	InputManager.interact.connect(interact_action)
 
 func _input(event):
-	if event.is_action_pressed("drop"):
-		if heldItem != null:
-			yeet(heldItem)
-	if event.is_action_pressed("interact"):
-		if is_instance_valid(focusedEnitity):
-			if focusedEnitity.is_in_group("Item"):
-				if heldItem == null:
-					grab(focusedEnitity)
-			else:
-				focusedEnitity.interact()
+	if event.is_action_pressed("ui_accept"):
+		rotate_held()
+
+func drop_action():
+	if heldItem != null:
+		yeet(heldItem)
+	pass
+
+func interact_action():
+	if is_instance_valid(focusedEnitity):
+		if focusedEnitity.is_in_group("Item"):
+			if heldItem == null:
+				grab(focusedEnitity)
+		else:
+			focusedEnitity.interact()
+	pass
+	
 
 func grab(item:RigidBody3D):
 	if heldItem != null:
@@ -39,9 +48,21 @@ func yeet(item:RigidBody3D):
 	heldItem = null
 	pass
 
+func rotate_held():
+	var oldOrder = [$ItemHolder/Slot1.get_children(),$ItemHolder/Slot2.get_children(),$ItemHolder/Slot3.get_children()]
+	var newOrder = [$ItemHolder/Slot2,$ItemHolder/Slot3,$ItemHolder/Slot1]
+	for Zorb in range(3):
+		if oldOrder[Zorb].size() != 0:
+			oldOrder[Zorb][0].reparent(newOrder[Zorb],false)
+	if $ItemHolder/Slot1.get_children().size() == 0:
+		heldItem = null
+	else:
+		heldItem = $ItemHolder/Slot1.get_children()[0]
+	pass
+
 func update_selection(): # each time an object enters/leave the interaction box an update is needed
-	for L in get_tree().get_nodes_in_group("Interact"): # dirty deselct all, might need upgrade later
-		L.deselect()
+	if focusedEnitity != null:
+		focusedEnitity.deselect()
 	var validSelectables = []
 	for A in $InteractionBox.get_overlapping_bodies():
 		if A.select_is_valid():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://brbksp2l0t2o3"]
+[gd_scene load_steps=22 format=3 uid="uid://brbksp2l0t2o3"]
 
 [ext_resource type="Script" path="res://entities/pot/pot.gd" id="1_gv73w"]
 
@@ -73,6 +73,54 @@ _data = {
 [sub_resource type="SphereShape3D" id="SphereShape3D_tl50c"]
 radius = 0.575699
 
+[sub_resource type="Gradient" id="Gradient_2bc3s"]
+offsets = PackedFloat32Array(0.211382, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hi3kv"]
+gradient = SubResource("Gradient_2bc3s")
+
+[sub_resource type="Curve" id="Curve_lv4uc"]
+min_value = -4.0
+max_value = 0.0
+_data = [Vector2(0, -4), 0.0, 0.0, 0, 0, Vector2(0.285714, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5w26e"]
+curve = SubResource("Curve_lv4uc")
+
+[sub_resource type="Curve" id="Curve_2gr17"]
+_data = [Vector2(0, 0.326316), 0.0, 0.0, 0, 0, Vector2(0.733766, 0.210526), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_js7wn"]
+curve = SubResource("Curve_2gr17")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6a5r4"]
+emission_shape = 3
+emission_box_extents = Vector3(0.4, 0.2, 0.4)
+direction = Vector3(0, -1, 0)
+spread = 0.0
+gravity = Vector3(0, 1, 0)
+radial_accel_min = -4.0
+radial_accel_curve = SubResource("CurveTexture_5w26e")
+scale_min = 0.2
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_js7wn")
+color = Color(0.917647, 0.921569, 0.392157, 1)
+color_ramp = SubResource("GradientTexture1D_hi3kv")
+turbulence_noise_strength = 0.4
+turbulence_noise_scale = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bunyw"]
+transparency = 1
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_kvbkx"]
+material = SubResource("StandardMaterial3D_bunyw")
+radial_segments = 8
+rings = 4
+
 [node name="Pot" type="RigidBody3D" groups=["Interact"]]
 collision_layer = 10
 collision_mask = 8
@@ -111,3 +159,15 @@ shape = SubResource("SphereShape3D_tl50c")
 
 [node name="Output" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.388191, 0)
+visible = false
+amount = 16
+lifetime = 0.6
+explosiveness = 0.12
+randomness = 0.46
+draw_order = 1
+transform_align = 2
+process_material = SubResource("ParticleProcessMaterial_6a5r4")
+draw_pass_1 = SubResource("SphereMesh_kvbkx")

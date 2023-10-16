@@ -38,6 +38,8 @@ func _ready():
 	pass
 
 func select_is_valid():
+	if get_parent().is_class("Marker3D"):
+		return false
 	return true
 
 func select():
@@ -46,4 +48,11 @@ func select():
 	
 func deselect():
 	$Sprite3D.modulate = baseColor
+	pass
+	
+func update_glow(heldItem):
+	if get_parent().is_class("Marker3D"):
+		$GPUParticles3D.visible = false
+	else:
+		$GPUParticles3D.visible = true
 	pass

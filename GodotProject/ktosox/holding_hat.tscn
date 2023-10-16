@@ -15,6 +15,45 @@ radial_segments = 16
 [sub_resource type="BoxShape3D" id="BoxShape3D_b0tp1"]
 size = Vector3(1.92385, 3.3763, 1.79652)
 
+[sub_resource type="Animation" id="Animation_dgwny"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Slot1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.0434, 0.261766, 2.66864e-08)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Slot2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.01441, 0.281469, -1.19629)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Slot3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.0085394, 0.306676, 0.904257)]
+}
+
 [sub_resource type="Animation" id="Animation_kq2sx"]
 resource_name = "Wobble"
 length = 4.0
@@ -54,45 +93,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0.0085394, 0.306676, 0.904257), Vector3(0.009, 0.342, 0.904), Vector3(0.009, 0.427, 0.904), Vector3(0.009, 0.142, 0.904), Vector3(0.0085394, 0.306676, 0.904257)]
-}
-
-[sub_resource type="Animation" id="Animation_dgwny"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Slot1:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1.0434, 0.261766, 2.66864e-08)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Slot2:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.01441, 0.281469, -1.19629)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Slot3:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.0085394, 0.306676, 0.904257)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u2wk6"]
@@ -137,3 +137,5 @@ libraries = {
 
 [connection signal="body_entered" from="InteractionBox" to="." method="_on_interaction_box_body_entered"]
 [connection signal="body_exited" from="InteractionBox" to="." method="_on_interaction_box_body_exited"]
+[connection signal="child_exiting_tree" from="ItemHolder/Slot1" to="." method="_on_slot_1_child_exiting_tree"]
+[connection signal="child_order_changed" from="ItemHolder/Slot1" to="." method="_on_slot_1_child_order_changed"]

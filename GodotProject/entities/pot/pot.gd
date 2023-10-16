@@ -38,6 +38,14 @@ func deselect():
 	$MeshInstance3D3.visible = false
 	pass
 
+func update_glow(heldItem):
+	if heldItem == null:
+		$GPUParticles3D.visible = false
+	elif heldItem.isReagent:
+		$GPUParticles3D.visible = true
+	else:
+		$GPUParticles3D.visible = false
+
 func om_nom_nom(item:RigidBody3D):
 	eating = true
 	item.freeze = true

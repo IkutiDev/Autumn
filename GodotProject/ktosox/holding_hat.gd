@@ -9,6 +9,7 @@ var heldItem = null #
 func _ready():
 	InputManager.drop.connect(drop_action)
 	InputManager.interact.connect(interact_action)
+	update_glow_state()
 
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
@@ -38,6 +39,7 @@ func grab(item:RigidBody3D):
 	item.reparent($ItemHolder/Slot1,false)
 	item.set_deferred("position",Vector3.ZERO)
 	heldItem = item
+	update_glow_state()
 	pass
 
 func yeet(item:RigidBody3D):
@@ -46,6 +48,7 @@ func yeet(item:RigidBody3D):
 
 	item.apply_central_impulse(Vector3(3,0,0).rotated(Vector3(0,1,0),global_rotation.y))
 	heldItem = null
+	update_glow_state()
 	pass
 
 func rotate_held():
@@ -58,6 +61,7 @@ func rotate_held():
 		heldItem = null
 	else:
 		heldItem = $ItemHolder/Slot1.get_children()[0]
+	update_glow_state()
 	pass
 
 func update_selection(): # each time an object enters/leave the interaction box an update is needed
@@ -79,6 +83,11 @@ func update_selection(): # each time an object enters/leave the interaction box 
 	focusedEnitity = winner
 	pass
 
+func update_glow_state():
+	for I in get_tree().get_nodes_in_group("Interact"):
+		I.update_glow(heldItem)
+	pass
+
 func get_held_item():
 	return heldItem
 	pass
@@ -92,4 +101,14 @@ func _on_interaction_box_body_entered(body):
 func _on_interaction_box_body_exited(body):
 
 	update_selection()
+	pass # Replace with function body.
+
+
+
+
+
+func _on_slot_1_child_order_changed():
+	if $ItemHolder/Slot1.get_child_count() == 0:
+		heldItem = null
+	update_glow_state()
 	pass # Replace with function body.

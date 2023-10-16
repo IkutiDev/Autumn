@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://b7mec423sxgw7"]
+[gd_scene load_steps=11 format=3 uid="uid://b7mec423sxgw7"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_xoabe"]
+[ext_resource type="PackedScene" uid="uid://dbbveu3jqy6rb" path="res://witch_body.glb" id="2_tq27x"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iq03j"]
 
@@ -33,6 +34,7 @@ shape = SubResource("CapsuleShape3D_iq03j")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_714lu")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
@@ -47,3 +49,6 @@ mesh = SubResource("CylinderMesh_vka7o")
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="MeshInstance3D"]
 transform = Transform3D(0.657033, 0, 0, 0, 1.01139, 0, 0, 0, -0.337407, 0, 1.16272, 0)
 mesh = SubResource("PrismMesh_erkg0")
+
+[node name="witch_body" parent="." instance=ExtResource("2_tq27x")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)

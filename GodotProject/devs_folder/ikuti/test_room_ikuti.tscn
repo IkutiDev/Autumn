@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://q7lggitqylaj"]
+[gd_scene load_steps=24 format=3 uid="uid://q7lggitqylaj"]
 
 [ext_resource type="Script" path="res://devs_folder/test_room.gd" id="1_mylgs"]
 [ext_resource type="PackedScene" uid="uid://b7mec423sxgw7" path="res://characters/player/player.tscn" id="2_velnn"]
 [ext_resource type="PackedScene" uid="uid://bj2d3bfp48e8u" path="res://core/camera/main_camera.tscn" id="3_cwhgt"]
+[ext_resource type="PackedScene" uid="uid://bel78dtmgu6xn" path="res://entities/harvest_nodes/harvest_node.tscn" id="4_xu24j"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7mpcj"]
 sky_top_color = Color(0.678431, 0.52549, 0.482353, 1)
@@ -246,14 +247,30 @@ shape = SubResource("BoxShape3D_yjpya")
 
 [node name="Player" parent="." instance=ExtResource("2_velnn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.50363, -0.632794)
+has_correct_plant_item = true
 
 [node name="MainCamera" parent="." instance=ExtResource("3_cwhgt")]
 
 [node name="PhantomCamera" parent="MainCamera" index="0"]
-transform = Transform3D(-4.37111e-08, -0.91354, 0.406735, 0, 0.406734, 0.913542, -0.999994, 3.99321e-08, -1.7779e-08, 5.905, 11.5036, -0.097794)
-follow_parameters/target_offset = Vector3(3.905, 11, 0.535)
+transform = Transform3D(-4.37111e-08, -0.642783, 0.766041, 0, 0.766039, 0.642785, -0.999993, 2.8097e-08, -3.34847e-08, 10.505, 7.09363, -0.097794)
+follow_parameters/target_offset = Vector3(8.505, 6.59, 0.535)
 
 [node name="Camera3D" parent="MainCamera" index="1"]
-transform = Transform3D(-4.37111e-08, -0.91354, 0.406735, 0, 0.406734, 0.913542, -0.999994, 3.99321e-08, -1.7779e-08, 5.905, 11.5036, -0.097794)
+transform = Transform3D(-4.37111e-08, -0.642783, 0.766041, 0, 0.766039, 0.642785, -0.999993, 2.8097e-08, -3.34847e-08, 10.505, 7.09363, -0.097794)
+
+[node name="HarvestNode" parent="." instance=ExtResource("4_xu24j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.316075, 0.5, -4.27403)
+grow_time = 7.0
+node_yield = 3
+node_life = 3
+
+[node name="HarvestNode2" parent="." instance=ExtResource("4_xu24j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7232, 0.5, -5.88949)
+can_grow = false
+
+[node name="HarvestNode3" parent="." instance=ExtResource("4_xu24j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.53367, 0.5, -1.10278)
+node_yield = 2
+node_life = 1
 
 [editable path="MainCamera"]

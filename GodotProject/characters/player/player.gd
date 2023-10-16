@@ -1,9 +1,13 @@
+class_name Player
 extends CharacterBody3D
 
 
 const SPEED = 5.0
 @export_category("Movement")
 @export var speed := 5.0
+
+@export_category("Debug")
+@export var has_correct_plant_item := false
 
 var current_velocity = Vector3.ZERO
 

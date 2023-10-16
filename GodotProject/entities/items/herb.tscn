@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dldv11w5gwe25"]
-
-[ext_resource type="PackedScene" uid="uid://kqu0naaa3i62" path="res://entities/items/item_base.tscn" id="1_0b233"]
-
-[node name="ItemBase" instance=ExtResource("1_0b233")]
-
-[node name="Sprite3D" parent="." index="1"]
-modulate = Color(0.03, 1, 0.110833, 1)

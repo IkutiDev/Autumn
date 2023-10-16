@@ -1,8 +1,18 @@
 extends RigidBody3D
 
+enum ITEM_TYPE {Apple, Pumpkin, Mandrake, Mushroom, Flower, Pie, Cake, BadApple, Junk}
+
 var eating = false
 
 var itemMemory = []
+
+var validRecipies = {
+	[ITEM_TYPE.Apple,ITEM_TYPE.Flower,ITEM_TYPE.Mushroom] : ITEM_TYPE.Pie,
+	[ITEM_TYPE.Pumpkin,ITEM_TYPE.Flower,ITEM_TYPE.Mushroom] : ITEM_TYPE.Pie,
+	[ITEM_TYPE.Mandrake,ITEM_TYPE.Flower,ITEM_TYPE.Flower] : ITEM_TYPE.Cake,
+	[ITEM_TYPE.Apple,ITEM_TYPE.Mushroom,ITEM_TYPE.Mushroom] : ITEM_TYPE.BadApple,
+}
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 
@@ -51,8 +61,18 @@ func consume(item:RigidBody3D):
 
 func puke():
 	# some smart code for picking what item to make
+	var result = 8
+	for R in validRecipies.keys():
+		var testedRecipie = R.duplicate()
+		for I in itemMemory:
+			testedRecipie.erase(I)
+		if testedRecipie.is_empty():
+			result = validRecipies[R]
+				
 	itemMemory.clear()
-	var resultItem = load("res://entities/items/blue_goop.tscn").instantiate() as RigidBody3D
+	var resultItem = load("res://entities/items/item_base.tscn").instantiate() as RigidBody3D
+	resultItem.type = result
+	resultItem.isReagent = false
 	resultItem.global_position = $Output.global_position
 	get_tree().current_scene.add_child(resultItem)
 	resultItem.apply_central_impulse(Vector3(7,0,0).rotated(Vector3(0,1,0),randf()*2*PI))

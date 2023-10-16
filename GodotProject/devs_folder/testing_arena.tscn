@@ -1,9 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dx1uxes5xodp0"]
+[gd_scene load_steps=7 format=3 uid="uid://dx1uxes5xodp0"]
 
-[ext_resource type="PackedScene" uid="uid://b3x08bo1cbyvy" path="res://devs_folder/dummy_player.tscn" id="1_0va12"]
-[ext_resource type="PackedScene" uid="uid://ciwrc3cnluwux" path="res://ktosox/holding_hat.tscn" id="2_srx5t"]
-[ext_resource type="PackedScene" uid="uid://dldv11w5gwe25" path="res://entities/items/herb.tscn" id="3_6yo0v"]
-[ext_resource type="PackedScene" uid="uid://bmud5otvo6pu6" path="res://entities/items/pumpkin.tscn" id="4_yrj70"]
+[ext_resource type="PackedScene" uid="uid://8ngyjp5ihobj" path="res://ktosox/debug_item_spawner.tscn" id="2_1q715"]
+[ext_resource type="PackedScene" uid="uid://b7mec423sxgw7" path="res://characters/player/player.tscn" id="3_vsu25"]
 [ext_resource type="PackedScene" uid="uid://brbksp2l0t2o3" path="res://entities/pot/pot.tscn" id="5_nwku8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yj2y7"]
@@ -19,7 +17,7 @@ size = Vector3(19.9503, 1, 19.2647)
 [node name="TestingArena" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 3, 4)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 5.01718, 6.26653)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.009, 0)
@@ -33,7 +31,6 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-visible = false
 mesh = SubResource("PlaneMesh_0fr0a")
 skeleton = NodePath("../..")
 
@@ -41,23 +38,11 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.465141, 0)
 shape = SubResource("BoxShape3D_vwepw")
 
-[node name="DummyPlayer" parent="." instance=ExtResource("1_0va12")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.235255, 0.0348589, 0.150222)
-gravity_scale = 0.0
-
-[node name="HoldingHat" parent="DummyPlayer" instance=ExtResource("2_srx5t")]
-
-[node name="ItemBase" parent="." instance=ExtResource("3_6yo0v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.26518, 0.0348589, -0.126721)
-
-[node name="ItemBase2" parent="." instance=ExtResource("4_yrj70")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
-
-[node name="ItemBase4" parent="." instance=ExtResource("4_yrj70")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.20161, 0, 2)
-
-[node name="ItemBase3" parent="." instance=ExtResource("4_yrj70")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.84174, 0, 2)
-
 [node name="Pot" parent="." instance=ExtResource("5_nwku8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.232839, -3)
+
+[node name="DebugItemSpawner" parent="." instance=ExtResource("2_1q715")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.133496, 0.672313, 4.56659)
+
+[node name="Player" parent="." instance=ExtResource("3_vsu25")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.14847, 0.0348592, 0.409645)

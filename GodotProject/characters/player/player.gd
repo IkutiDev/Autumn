@@ -5,7 +5,8 @@ extends CharacterBody3D
 const SPEED = 5.0
 @export_category("Movement")
 @export var speed := 5.0
-
+@export_group("Reference")
+@export var player_animation : PlayerAnimation
 @export_category("Debug")
 @export var has_correct_plant_item := false
 
@@ -48,5 +49,7 @@ func _physics_process(delta):
 #		velocity.z = move_toward(velocity.z, 0, speed)
 
 	velocity = current_velocity
+	
+	player_animation.set_player_motion(velocity.normalized().x != 0 or velocity.normalized().z != 0)
 	
 	move_and_slide()

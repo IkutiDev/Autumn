@@ -17,7 +17,7 @@ var typeToImageMap = {
 	5:load("res://entities/items/pie-slice.png"),
 	6:load("res://entities/items/cake-slice.png"),
 	7:load("res://entities/items/apple-core.png"),
-	8:load("res://icon.png")
+	8:load("res://entities/items/cracked-glass.png")
 }
 
 var typeToColorMap = {

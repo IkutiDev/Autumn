@@ -137,5 +137,4 @@ libraries = {
 
 [connection signal="body_entered" from="InteractionBox" to="." method="_on_interaction_box_body_entered"]
 [connection signal="body_exited" from="InteractionBox" to="." method="_on_interaction_box_body_exited"]
-[connection signal="child_exiting_tree" from="ItemHolder/Slot1" to="." method="_on_slot_1_child_exiting_tree"]
 [connection signal="child_order_changed" from="ItemHolder/Slot1" to="." method="_on_slot_1_child_order_changed"]

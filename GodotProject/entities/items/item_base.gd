@@ -52,7 +52,7 @@ func deselect():
 	
 func update_glow(heldItem):
 	if get_parent().is_class("Marker3D"):
-		$GPUParticles3D.visible = false
+		$GPUParticles3D.emitting = false
 	else:
-		$GPUParticles3D.visible = true
+		$GPUParticles3D.emitting = true
 	pass

@@ -5,6 +5,8 @@ extends Node3D
 @export var grow_time := 5.0
 @export var node_yield := 1
 @export var node_life := -1
+@export var item_to_spawn : PackedScene
+@export var spawn_item_offset := Vector3(0,2,0)
 @export_group("References")
 @export var interaction_area : Area3D
 @export var visual_mesh_instance : MeshInstance3D
@@ -29,7 +31,7 @@ func _ready():
 	if not can_grow:
 		harvestable = true
 	InputManager.interact.connect(interaction)
-	base_color = visual_mesh_instance.mesh.material.albedo_color
+#	base_color = visual_mesh_instance.mesh.material.albedo_color
 	interaction_area.body_entered.connect(select)
 	interaction_area.body_exited.connect(deselect)
 
@@ -41,13 +43,13 @@ func _exit_tree():
 
 func select(body : Node3D):
 	player = body as Player	
-	if not is_growing:	
-		visual_mesh_instance.mesh.material.albedo_color = Color("Black")
+#	if not is_growing:	
+#		visual_mesh_instance.mesh.material.albedo_color = Color("Black")
 	
 func deselect(body : Node3D):
 	player = null	
-	if not is_growing:	
-		visual_mesh_instance.mesh.material.albedo_color = base_color
+#	if not is_growing:	
+#		visual_mesh_instance.mesh.material.albedo_color = base_color
 
 	
 func _process(delta):
@@ -57,8 +59,8 @@ func _process(delta):
 		if growing_timer <= 0:
 			harvestable = true
 			is_growing = false
-	
-	plant_mesh_instance.visible = harvestable
+	if can_grow:
+		plant_mesh_instance.visible = harvestable
 	
 func interaction() -> void:
 	
@@ -68,10 +70,17 @@ func interaction() -> void:
 	if not player:
 		return
 	
+	if player.holding_hat.focusedEnitity != null or player.holding_hat.heldItem != null:
+		return
+	
 	if can_grow:
 		plantable = player.has_correct_plant_item
 	
 	if harvestable:
+		for i in node_yield:
+			var item_instance = item_to_spawn.instantiate() as ItemBase
+			get_tree().root.add_child(item_instance)
+			item_instance.global_position = player.global_position + spawn_item_offset
 		print("Gain "+ str(node_yield)+" items")
 		if can_grow:
 			if current_node_life > 0:
@@ -88,7 +97,7 @@ func interaction() -> void:
 
 func start_growing(restart_node_life : bool) -> void:
 	is_growing = true
-	visual_mesh_instance.mesh.material.albedo_color = Color("Red")
+#	visual_mesh_instance.mesh.material.albedo_color = Color("Red")
 	growing_timer = grow_time
 	if restart_node_life:
 		current_node_life = node_life

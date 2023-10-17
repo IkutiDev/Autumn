@@ -7,8 +7,7 @@ const SPEED = 5.0
 @export var speed := 5.0
 @export_group("Reference")
 @export var player_animation : PlayerAnimation
-@export_category("Debug")
-@export var has_correct_plant_item := false
+@export var holding_hat : HoldingHat
 
 var current_velocity = Vector3.ZERO
 

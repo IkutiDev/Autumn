@@ -1,3 +1,4 @@
+class_name HoldingHat
 extends Node3D
 
 # it is the hat that holds... items, in air, above the player's head
@@ -107,8 +108,9 @@ func _on_interaction_box_body_exited(body):
 
 
 func _on_slot_1_child_order_changed():
-	if $ItemHolder/Slot1.get_child_count() == 0:
-		heldItem = null
+	if $ItemHolder/Slot1 != null:
+		if $ItemHolder/Slot1.get_child_count() == 0:
+			heldItem = null
 
 	update_glow_state()
 	pass # Replace with function body.

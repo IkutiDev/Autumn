@@ -1,58 +1,31 @@
-[gd_scene load_steps=8 format=3 uid="uid://bel78dtmgu6xn"]
+[gd_scene load_steps=4 format=3 uid="uid://bel78dtmgu6xn"]
 
 [ext_resource type="Script" path="res://entities/harvest_nodes/harvest_node.gd" id="1_2kosm"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jdgit"]
-resource_local_to_scene = true
-albedo_color = Color(0.4, 0.203922, 0.137255, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_rou4r"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_jdgit")
+[ext_resource type="PackedScene" uid="uid://kqu0naaa3i62" path="res://entities/items/item_base.tscn" id="2_tpsgj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q156w"]
 size = Vector3(1.5, 1, 1.5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_r67qs"]
-size = Vector3(1, 0.343, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q10rs"]
-albedo_color = Color(0.0784314, 0.513726, 0.223529, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_jejow"]
-material = SubResource("StandardMaterial3D_q10rs")
-
-[node name="HarvestNode" type="Node3D" node_paths=PackedStringArray("interaction_area", "visual_mesh_instance", "plant_mesh_instance", "grow_time_label")]
+[node name="HarvestNode" type="Node3D" node_paths=PackedStringArray("interaction_area", "grow_time_label")]
 script = ExtResource("1_2kosm")
+item_to_spawn = ExtResource("2_tpsgj")
 interaction_area = NodePath("Area3D")
-visual_mesh_instance = NodePath("MeshInstance3D")
-plant_mesh_instance = NodePath("MeshInstance3D2")
 grow_time_label = NodePath("Label3DGrowTime")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.343353, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("BoxMesh_rou4r")
-
 [node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 4
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_q156w")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("BoxShape3D_r67qs")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.076717, 0, 0, 0, 0.598819, 0, 0, 0, 0.119858, 0, 0.182406, 0)
-visible = false
-mesh = SubResource("BoxMesh_jejow")
-
 [node name="Label3DGrowTime" type="Label3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.5167, 0.518493, -0.018811)
+visible = false
 text = "Grow time:"
 
 [node name="Label3DMoisture" type="Label3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.51726, 0.303591, -0.0419818)
+visible = false
 text = "Moisture:"

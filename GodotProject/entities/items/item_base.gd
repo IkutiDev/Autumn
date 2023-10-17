@@ -1,3 +1,4 @@
+class_name ItemBase
 extends RigidBody3D
 
 @onready var baseColor = typeToColorMap[type]

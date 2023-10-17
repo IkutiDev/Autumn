@@ -1,30 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://b7mec423sxgw7"]
+[gd_scene load_steps=5 format=3 uid="uid://b7mec423sxgw7"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_xoabe"]
 [ext_resource type="PackedScene" uid="uid://df75fuhrjlp56" path="res://characters/player/witch_body.glb" id="2_vt84b"]
 [ext_resource type="PackedScene" uid="uid://ciwrc3cnluwux" path="res://ktosox/holding_hat.tscn" id="3_lrwu0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iq03j"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_714lu"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7t5xg"]
-albedo_color = Color(1, 0.294118, 0.258824, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_8igeq"]
-material = SubResource("StandardMaterial3D_7t5xg")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d1amo"]
-albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_vka7o"]
-material = SubResource("StandardMaterial3D_d1amo")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ff0df"]
-albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="PrismMesh" id="PrismMesh_erkg0"]
-material = SubResource("StandardMaterial3D_ff0df")
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 4
@@ -34,24 +14,6 @@ script = ExtResource("1_xoabe")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_iq03j")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1, 0)
-visible = false
-mesh = SubResource("CapsuleMesh_714lu")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
-transform = Transform3D(0.864316, 0, 0, 0, -0.216502, 0, 0, 0, -0.159258, 0.405569, 0.504726, -0.0429412)
-mesh = SubResource("BoxMesh_8igeq")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
-transform = Transform3D(1.36447, 0, 0, 0, 0.0975657, 0, 0, 0, 1.33667, 3.33785e-05, 0.876403, 0.00293684)
-mesh = SubResource("CylinderMesh_vka7o")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="MeshInstance3D"]
-transform = Transform3D(0.657033, 0, 0, 0, 1.01139, 0, 0, 0, -0.337407, 0, 1.16272, 0)
-mesh = SubResource("PrismMesh_erkg0")
 
 [node name="witch_body" parent="." instance=ExtResource("2_vt84b")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)

@@ -77,6 +77,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0349877, 0)
 lifetime = 0.6
 explosiveness = 0.12
 randomness = 0.46
+local_coords = true
 draw_order = 1
 transform_align = 2
 process_material = SubResource("ParticleProcessMaterial_6a5r4")

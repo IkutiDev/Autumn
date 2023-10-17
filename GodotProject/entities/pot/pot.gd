@@ -40,11 +40,11 @@ func deselect():
 
 func update_glow(heldItem):
 	if heldItem == null:
-		$GPUParticles3D.visible = false
+		$GPUParticles3D.emitting = false
 	elif heldItem.isReagent:
-		$GPUParticles3D.visible = true
+		$GPUParticles3D.emitting = true
 	else:
-		$GPUParticles3D.visible = false
+		$GPUParticles3D.emitting = false
 
 func om_nom_nom(item:RigidBody3D):
 	eating = true

@@ -5,10 +5,13 @@
 [ext_resource type="PackedScene" uid="uid://ciwrc3cnluwux" path="res://ktosox/holding_hat.tscn" id="3_lrwu0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iq03j"]
+radius = 0.25
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 4
 collision_mask = 2
+floor_block_on_wall = false
+floor_max_angle = 1.0472
 script = ExtResource("1_xoabe")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://kjclwxaxqsfl"]
+
+[ext_resource type="PackedScene" uid="uid://kqu0naaa3i62" path="res://entities/items/item_base.tscn" id="1_ta1tv"]
+[ext_resource type="PackedScene" uid="uid://dkbtm78hfg35o" path="res://entities/items/ingredients/worm.glb" id="2_8aeqr"]
+
+[node name="Worm" instance=ExtResource("1_ta1tv")]
+type = 6
+
+[node name="MeshInstance3D" parent="." index="2"]
+mesh = null
+
+[node name="worm" parent="." index="4" instance=ExtResource("2_8aeqr")]
+transform = Transform3D(0.173275, -0.0998791, 0, 0.0998791, 0.173275, 0, 0, 0, 0.2, 0.118008, -0.33433, 0)

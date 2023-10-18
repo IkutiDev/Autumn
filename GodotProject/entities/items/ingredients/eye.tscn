@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnwe2ryaueoac"]
+
+[ext_resource type="PackedScene" uid="uid://kqu0naaa3i62" path="res://entities/items/item_base.tscn" id="1_u54m7"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_wvi8c"]
+radius = 0.25
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kovv5"]
+albedo_color = Color(0.109804, 0.156863, 0.447059, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_oe7fj"]
+material = SubResource("StandardMaterial3D_kovv5")
+radius = 0.125
+height = 0.25
+
+[node name="Eye" instance=ExtResource("1_u54m7")]
+type = 7
+
+[node name="MeshInstance3D" parent="." index="2"]
+mesh = SubResource("SphereMesh_wvi8c")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.149744)
+mesh = SubResource("SphereMesh_oe7fj")

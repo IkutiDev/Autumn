@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://k323xfyk82mu"]
+
+[ext_resource type="PackedScene" uid="uid://kqu0naaa3i62" path="res://entities/items/item_base.tscn" id="1_qlgiq"]
+
+[node name="DevilPie" instance=ExtResource("1_qlgiq")]
+type = 11
+isReagent = false

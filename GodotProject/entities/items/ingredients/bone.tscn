@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bx0mw4potkdhs"]
+
+[ext_resource type="PackedScene" uid="uid://kqu0naaa3i62" path="res://entities/items/item_base.tscn" id="1_q4684"]
+[ext_resource type="PackedScene" uid="uid://b144yh8mby6h6" path="res://entities/items/ingredients/1_bone_hand.glb" id="2_2p44v"]
+
+[node name="Bone" instance=ExtResource("1_q4684")]
+type = 5
+
+[node name="MeshInstance3D" parent="." index="2"]
+mesh = null
+
+[node name="1_bone_hand" parent="." index="4" instance=ExtResource("2_2p44v")]
+transform = Transform3D(0.131785, 0.0815954, 0, -0.0815954, 0.131785, 0, 0, 0, 0.155, -0.0843846, -0.31093, 0)

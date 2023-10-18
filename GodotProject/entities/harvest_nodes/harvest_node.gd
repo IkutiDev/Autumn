@@ -12,6 +12,7 @@ extends Node3D
 @export var visual_mesh_instance : MeshInstance3D
 @export var plant_mesh_instance : MeshInstance3D
 @export var grow_time_label : Label3D
+@export var animation_player : AnimationPlayer
 
 var base_color : Color
 var player : Player
@@ -30,6 +31,8 @@ func _enter_tree():
 func _ready():
 	if not can_grow:
 		harvestable = true
+	if not is_growing and animation_player != null:	
+		animation_player.stop()
 	InputManager.interact.connect(interaction)
 #	base_color = visual_mesh_instance.mesh.material.albedo_color
 	interaction_area.body_entered.connect(select)
@@ -43,13 +46,13 @@ func _exit_tree():
 
 func select(body : Node3D):
 	player = body as Player	
-#	if not is_growing:	
-#		visual_mesh_instance.mesh.material.albedo_color = Color("Black")
+	if not is_growing and animation_player != null:	
+		animation_player.play()
 	
 func deselect(body : Node3D):
 	player = null	
-#	if not is_growing:	
-#		visual_mesh_instance.mesh.material.albedo_color = base_color
+	if not is_growing and animation_player != null:	
+		animation_player.stop()
 
 	
 func _process(delta):

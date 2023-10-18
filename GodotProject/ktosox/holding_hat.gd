@@ -84,6 +84,8 @@ func update_selection(): # each time an object enters/leave the interaction box 
 	pass
 
 func update_glow_state(): # so that all the stuff that needs to glow depending on what the player is holding gets a heads up
+	if get_tree() == null:
+		return
 	for I in get_tree().get_nodes_in_group("Interact"):
 		I.update_glow(heldItem)
 	pass

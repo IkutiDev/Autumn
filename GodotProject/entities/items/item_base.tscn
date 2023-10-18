@@ -1,7 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://kqu0naaa3i62"]
+[gd_scene load_steps=15 format=3 uid="uid://kqu0naaa3i62"]
 
 [ext_resource type="Script" path="res://entities/items/item_base.gd" id="1_roo1k"]
-[ext_resource type="Texture2D" uid="uid://brtfi11r5tfdd" path="res://entities/items/apple-seeds.png" id="2_0mutq"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_equfn"]
 bounce = 0.4
@@ -57,20 +56,23 @@ material = SubResource("StandardMaterial3D_bunyw")
 radial_segments = 8
 rings = 4
 
-[node name="ItemBase" type="RigidBody3D" groups=["Interact", "Item"]]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3gv0r"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_6rlpt"]
+material = SubResource("StandardMaterial3D_3gv0r")
+radius = 0.125
+height = 0.5
+
+[node name="ItemBase" type="RigidBody3D" node_paths=PackedStringArray("item_label") groups=["Interact", "Item"]]
 collision_layer = 8
 collision_mask = 10
 physics_material_override = SubResource("PhysicsMaterial_equfn")
 script = ExtResource("1_roo1k")
+item_label = NodePath("ItemName")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_fgmb0")
-
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
-pixel_size = 0.005
-billboard = 2
-texture = ExtResource("2_0mutq")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0349877, 0)
@@ -82,3 +84,11 @@ draw_order = 1
 transform_align = 2
 process_material = SubResource("ParticleProcessMaterial_6a5r4")
 draw_pass_1 = SubResource("SphereMesh_kvbkx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_6rlpt")
+
+[node name="ItemName" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.386886, 0)
+billboard = 1
+text = "Apple"

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bay7vrmt1ora3"]
+
+[ext_resource type="PackedScene" uid="uid://kqu0naaa3i62" path="res://entities/items/item_base.tscn" id="1_1v0l6"]
+
+[node name="MushroomJelly" instance=ExtResource("1_1v0l6")]
+type = 15
+isReagent = false

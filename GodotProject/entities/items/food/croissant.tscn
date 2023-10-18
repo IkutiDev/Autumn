@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmqfpekayuijs"]
+
+[ext_resource type="PackedScene" uid="uid://kqu0naaa3i62" path="res://entities/items/item_base.tscn" id="1_8l06e"]
+
+[node name="Croissant" instance=ExtResource("1_8l06e")]
+type = 14
+isReagent = false

@@ -1,30 +1,44 @@
 extends Node3D
 
-@export var desiredItemType = 0
 
-@export var offeredItemType = 6
+@export var desiredItem : PackedScene
 
-var itemBaseScene = preload("res://entities/items/item_base.tscn")
+@export var broughtItem : PackedScene
 
-# Called when the node enters the scene tree for the first time.
+var desiredItemNode
+
+var broughtItemNode
+
+@export var allItemsOffered : Array[PackedScene] = []
+
+@export var allItemsWanted : Array[PackedScene] = []
+
+
 func _ready():
-	pass # Replace with function body.
+	if desiredItem == null:
+		desiredItem = allItemsWanted[randi()%allItemsWanted.size()]
+	if broughtItem == null:
+		broughtItem = allItemsOffered[randi()%allItemsOffered.size()]
+	print(desiredItem,broughtItem)
+	desiredItemNode = desiredItem.instantiate()
+	broughtItemNode = broughtItem.instantiate()
+
 
 
 
 
 func give_gift():
-
-	var giftItem = itemBaseScene.instantiate()as RigidBody3D
-	giftItem.type = offeredItemType
-	giftItem.isReagent = false
-	giftItem.global_position = $ItemSpawnPoint.global_position
-	get_tree().current_scene.add_child(giftItem)
+	broughtItemNode.global_position = $ItemSpawnPoint.global_position
+	get_tree().current_scene.add_child(broughtItemNode)
 	$AnimationPlayer.play("exit")
 	pass
 
 
 func _on_pickup_spot_body_entered(body):
-	if get_tree().get_nodes_in_group("Hat")[0].get_held_item().type == desiredItemType:
+	var heldItem = get_tree().get_nodes_in_group("Hat")[0].get_held_item()
+	if heldItem == null:
+		return
+	if heldItem.type == desiredItemNode.type:
+		heldItem.queue_free()
 		give_gift()
 	pass # Replace with function body.

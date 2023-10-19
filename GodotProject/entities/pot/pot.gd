@@ -17,6 +17,8 @@ var validRecipies = {
 	[ItemBase.ITEM_TYPE.Bone,ItemBase.ITEM_TYPE.Mushroom,ItemBase.ITEM_TYPE.Mandrake] : ItemBase.ITEM_TYPE.DevilPie,
 }
 
+var fireworkScene = preload("res://particles/firework.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 
@@ -67,6 +69,11 @@ func consume(item:RigidBody3D):
 	itemMemory.push_back(item.type)
 	item.queue_free()
 	eating = false
+	var firework = fireworkScene.instantiate()
+	firework.global_position = $Output.global_position
+	add_child(firework)
+	firework.apply_central_impulse(Vector3(0,5,0).rotated(Vector3(0,1,0),randf()*2*PI))
+	
 	if itemMemory.size()>2:
 		puke()
 	pass

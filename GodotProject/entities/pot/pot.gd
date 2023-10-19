@@ -17,10 +17,18 @@ var validRecipies = {
 	[ItemBase.ITEM_TYPE.Bone,ItemBase.ITEM_TYPE.Mushroom,ItemBase.ITEM_TYPE.Mandrake] : ItemBase.ITEM_TYPE.DevilPie,
 }
 
+@export var allRelevantItems : Array[PackedScene] = []
+
+var itemToItemTypeMap = {}
+
+
+
 var fireworkScene = preload("res://particles/firework.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	for A in allRelevantItems:
+		itemToItemTypeMap[A.instantiate().type] = A
 
 	pass # Replace with function body.
 
@@ -82,9 +90,7 @@ func puke():
 			result = validRecipies[R]
 				
 	itemMemory.clear()
-	var resultItem = load("res://entities/items/item_base.tscn").instantiate() as RigidBody3D
-	resultItem.type = result
-	resultItem.isReagent = false
+	var resultItem = itemToItemTypeMap[result].instantiate()
 	resultItem.global_position = $Output.global_position
 	get_tree().current_scene.add_child(resultItem)
 	resultItem.apply_central_impulse(Vector3(7,0,0).rotated(Vector3(0,1,0),randf()*2*PI))

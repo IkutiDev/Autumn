@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdu2betd52uyu"
-path.s3tc="res://.godot/imported/cracked-glass.png-67ff8dd2cc69cf1aa6c46a0b6237e400.s3tc.ctex"
+uid="uid://dl6fn1b5frm08"
+path.s3tc="res://.godot/imported/ThoughtCloud.png-5a584417ae517f60ae8c9729b3b93b15.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://entities/items/cracked-glass.png"
-dest_files=["res://.godot/imported/cracked-glass.png-67ff8dd2cc69cf1aa6c46a0b6237e400.s3tc.ctex"]
+source_file="res://characters/clients/ThoughtCloud.png"
+dest_files=["res://.godot/imported/ThoughtCloud.png-5a584417ae517f60ae8c9729b3b93b15.s3tc.ctex"]
 
 [params]
 

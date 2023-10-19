@@ -1,0 +1,94 @@
+[gd_scene load_steps=9 format=3 uid="uid://ctvn7ntfk6sgk"]
+
+[ext_resource type="Script" path="res://characters/clients/client.gd" id="1_8qodt"]
+[ext_resource type="PackedScene" uid="uid://b24q3yuorwche" path="res://characters/clients/all in one_ client.glb" id="2_18q7v"]
+[ext_resource type="Texture2D" uid="uid://dl6fn1b5frm08" path="res://characters/clients/ThoughtCloud.png" id="3_etya4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e8jb5"]
+size = Vector3(1, 1, 2)
+
+[sub_resource type="Animation" id="Animation_3dvpk"]
+resource_name = "enter"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -5, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_248l1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_d6omq"]
+resource_name = "exit"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -5, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xwhrr"]
+_data = {
+"RESET": SubResource("Animation_248l1"),
+"enter": SubResource("Animation_3dvpk"),
+"exit": SubResource("Animation_d6omq")
+}
+
+[node name="Customer" type="Node3D" groups=["Customer"]]
+script = ExtResource("1_8qodt")
+
+[node name="all in one_ client" parent="." instance=ExtResource("2_18q7v")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="PickupSpot" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PickupSpot"]
+shape = SubResource("BoxShape3D_e8jb5")
+
+[node name="ItemSpawnPoint" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.45094, -1.4)
+
+[node name="OfferedItemPreview" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.478936, 0.594266)
+
+[node name="DesiredItemPreview" type="Sprite3D" parent="."]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 2.08543, -0.0659181)
+texture = ExtResource("3_etya4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "enter"
+libraries = {
+"": SubResource("AnimationLibrary_xwhrr")
+}
+
+[connection signal="body_entered" from="PickupSpot" to="." method="_on_pickup_spot_body_entered"]

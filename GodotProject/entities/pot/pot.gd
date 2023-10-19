@@ -54,15 +54,8 @@ func update_glow(heldItem):
 
 func om_nom_nom(item:RigidBody3D):
 	eating = true
-	item.freeze = true
-	$ItemPath.curve.set_point_position(0,to_local(item.global_position))
-	item.reparent($ItemPath/Grab,false)
-	
+	$ItemPath.move_item(item)
 
-	$ItemPath/Mover.play("EatAnimation")
-	await($ItemPath/Mover.animation_finished)
-	consume(item)
-	#create a path between the item and the pot and move the item along the path
 	pass
 
 func consume(item:RigidBody3D):
@@ -99,3 +92,8 @@ func puke():
 
 
 
+
+
+func _on_item_path_moving_complete(item):
+	consume(item)
+	pass # Replace with function body.

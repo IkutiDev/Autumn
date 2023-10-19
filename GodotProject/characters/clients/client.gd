@@ -1,8 +1,8 @@
 extends Node3D
 
-var desiredItemType
+@export var desiredItemType = 0
 
-var offeredItemType
+@export var offeredItemType = 6
 
 var itemBaseScene = preload("res://entities/items/item_base.tscn")
 
@@ -13,12 +13,14 @@ func _ready():
 
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 func give_gift():
-	
+
+	var giftItem = itemBaseScene.instantiate()as RigidBody3D
+	giftItem.type = offeredItemType
+	giftItem.isReagent = false
+	giftItem.global_position = $ItemSpawnPoint.global_position
+	get_tree().current_scene.add_child(giftItem)
+	$AnimationPlayer.play("exit")
 	pass
 
 

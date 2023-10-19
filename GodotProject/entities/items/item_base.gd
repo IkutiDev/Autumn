@@ -12,6 +12,8 @@ Junk}
 @export_group("References")
 @export var item_label : Label3D
 
+@export var itemScenes : Array[PackedScene] = []
+
 #var typeToImageMap = {
 #	0:load("res://entities/items/apple-seeds.png"),
 #	1:load("res://entities/items/pumpkin.png"),
@@ -48,16 +50,16 @@ func select_is_valid():
 	return true
 
 func select():
-#	$Sprite3D.modulate = Color("Pink")
+	$SelectionBox.visible = true
 	pass
 	
 func deselect():
-#	$Sprite3D.modulate = baseColor
+	$SelectionBox.visible = false
 	pass
 	
 func update_glow(heldItem):
 	if get_parent().is_class("Marker3D"):
-		$GPUParticles3D.emitting = false
+		$Highlight.emitting = false
 	else:
-		$GPUParticles3D.emitting = true
+		$Highlight.emitting = true
 	pass

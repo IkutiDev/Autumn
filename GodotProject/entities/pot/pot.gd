@@ -45,11 +45,11 @@ func select_is_valid():
 	return !eating
 
 func select():
-	$MeshInstance3D3.visible = true
+	$SelectionUpscale/SelectionBox.visible = true
 	pass
 	
 func deselect():
-	$MeshInstance3D3.visible = false
+	$SelectionUpscale/SelectionBox.visible = false
 	pass
 
 func update_glow(heldItem):

@@ -1,8 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://ctvn7ntfk6sgk"]
+[gd_scene load_steps=18 format=3 uid="uid://ctvn7ntfk6sgk"]
 
 [ext_resource type="Script" path="res://characters/clients/client.gd" id="1_8qodt"]
-[ext_resource type="PackedScene" uid="uid://b24q3yuorwche" path="res://characters/clients/all in one_ client.glb" id="2_18q7v"]
+[ext_resource type="PackedScene" uid="uid://bx0mw4potkdhs" path="res://entities/items/ingredients/bone.tscn" id="2_3qnql"]
+[ext_resource type="PackedScene" uid="uid://elymmgtpjrc" path="res://characters/clients/all_in_one__client.tscn" id="2_xxc38"]
+[ext_resource type="PackedScene" uid="uid://cnwe2ryaueoac" path="res://entities/items/ingredients/eye.tscn" id="3_417wa"]
 [ext_resource type="Texture2D" uid="uid://dl6fn1b5frm08" path="res://characters/clients/ThoughtCloud.png" id="3_etya4"]
+[ext_resource type="PackedScene" uid="uid://c1cf2yc7l321q" path="res://entities/items/ingredients/junk.tscn" id="4_1hlc0"]
+[ext_resource type="PackedScene" uid="uid://bmflwiopd333r" path="res://entities/items/food/bad_apple.tscn" id="5_nj4yk"]
+[ext_resource type="PackedScene" uid="uid://dmqfpekayuijs" path="res://entities/items/food/croissant.tscn" id="6_j054s"]
+[ext_resource type="PackedScene" uid="uid://bay7vrmt1ora3" path="res://entities/items/food/mushroom_jelly.tscn" id="11_ptp3k"]
+[ext_resource type="PackedScene" uid="uid://y852j31wdn2u" path="res://entities/items/food/spaghetti.tscn" id="12_todqo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e8jb5"]
 size = Vector3(1, 1, 2)
@@ -61,10 +68,20 @@ _data = {
 "exit": SubResource("Animation_d6omq")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_otba3"]
+transparency = 1
+albedo_color = Color(0, 0.588235, 0.588235, 0.462745)
+
+[sub_resource type="BoxMesh" id="BoxMesh_umgpg"]
+material = SubResource("StandardMaterial3D_otba3")
+size = Vector3(0.4, 0.4, 0.4)
+
 [node name="Customer" type="Node3D" groups=["Customer"]]
 script = ExtResource("1_8qodt")
+allItemsOffered = Array[PackedScene]([ExtResource("2_3qnql"), ExtResource("3_417wa"), ExtResource("4_1hlc0")])
+allItemsWanted = Array[PackedScene]([ExtResource("5_nj4yk"), ExtResource("6_j054s"), ExtResource("11_ptp3k"), ExtResource("12_todqo")])
 
-[node name="all in one_ client" parent="." instance=ExtResource("2_18q7v")]
+[node name="all in one_ client" parent="." instance=ExtResource("2_xxc38")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 
 [node name="PickupSpot" type="Area3D" parent="."]
@@ -78,11 +95,9 @@ shape = SubResource("BoxShape3D_e8jb5")
 [node name="ItemSpawnPoint" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.45094, -1.4)
 
-[node name="OfferedItemPreview" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.478936, 0.594266)
-
 [node name="DesiredItemPreview" type="Sprite3D" parent="."]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 2.08543, -0.0659181)
+billboard = 2
 texture = ExtResource("3_etya4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -90,5 +105,9 @@ autoplay = "enter"
 libraries = {
 "": SubResource("AnimationLibrary_xwhrr")
 }
+
+[node name="OfferedItemPreview" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.690445, 0.422251)
+mesh = SubResource("BoxMesh_umgpg")
 
 [connection signal="body_entered" from="PickupSpot" to="." method="_on_pickup_spot_body_entered"]

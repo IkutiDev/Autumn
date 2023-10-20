@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://brbksp2l0t2o3"]
+[gd_scene load_steps=35 format=3 uid="uid://brbksp2l0t2o3"]
 
 [ext_resource type="Script" path="res://entities/pot/pot.gd" id="1_gv73w"]
 [ext_resource type="PackedScene" uid="uid://cxp55nlpryw84" path="res://ktosox/le_item_mover.tscn" id="2_eqkam"]
@@ -19,12 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://bcravt3mjleqo" path="res://entities/items/food/muffin.tscn" id="16_6jvrc"]
 [ext_resource type="PackedScene" uid="uid://bay7vrmt1ora3" path="res://entities/items/food/mushroom_jelly.tscn" id="17_b7lej"]
 [ext_resource type="PackedScene" uid="uid://y852j31wdn2u" path="res://entities/items/food/spaghetti.tscn" id="18_yy6gd"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_233pv"]
-albedo_color = Color(0.752941, 0.956863, 0.392157, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_fp01g"]
-material = SubResource("StandardMaterial3D_233pv")
+[ext_resource type="PackedScene" uid="uid://dx4wjxdx8bvt6" path="res://entities/selection_box.tscn" id="19_0j32w"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k8haf"]
 albedo_color = Color(0.168627, 0.168627, 0.168627, 1)
@@ -103,10 +98,12 @@ freeze_mode = 1
 script = ExtResource("1_gv73w")
 allRelevantItems = Array[PackedScene]([ExtResource("2_rlkwm"), ExtResource("3_mf85v"), ExtResource("4_j6qtj"), ExtResource("5_5t8if"), ExtResource("6_qsg72"), ExtResource("7_ilsg3"), ExtResource("8_rouxf"), ExtResource("9_bnejn"), ExtResource("10_8sl03"), ExtResource("11_6qpca"), ExtResource("12_6ne7o"), ExtResource("13_x3j8i"), ExtResource("14_bmix3"), ExtResource("15_umpqf"), ExtResource("16_6jvrc"), ExtResource("17_b7lej"), ExtResource("18_yy6gd")])
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.338057, 0)
-visible = false
-mesh = SubResource("PlaneMesh_fp01g")
+[node name="SelectionUpscale" type="Node3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="SelectionBox" parent="SelectionUpscale" instance=ExtResource("19_0j32w")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+skeleton = NodePath("../..")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 0.7, 0)

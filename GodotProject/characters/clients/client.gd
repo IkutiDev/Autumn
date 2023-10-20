@@ -22,14 +22,19 @@ func _ready():
 	print(desiredItem,broughtItem)
 	desiredItemNode = desiredItem.instantiate()
 	broughtItemNode = broughtItem.instantiate()
+	broughtItemNode.freeze = true
+	desiredItemNode.freeze = true
+	$DesiredItemPreview.add_child(desiredItemNode)
+	$OfferedItemPreview.add_child(broughtItemNode)
 
 
 
 
 
 func give_gift():
+	broughtItemNode.reparent(get_tree().current_scene)
 	broughtItemNode.global_position = $ItemSpawnPoint.global_position
-	get_tree().current_scene.add_child(broughtItemNode)
+	broughtItemNode.freeze = false
 	$AnimationPlayer.play("exit")
 	pass
 

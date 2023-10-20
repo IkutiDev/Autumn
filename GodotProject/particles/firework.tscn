@@ -1,9 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://cqour40q5pmfb"]
+[gd_scene load_steps=18 format=3 uid="uid://cqour40q5pmfb"]
 
 [ext_resource type="Texture2D" uid="uid://bxqtbw34aughs" path="res://particles/scorch_03.png" id="1_l0e1p"]
 
 [sub_resource type="Gradient" id="Gradient_0ox1f"]
-offsets = PackedFloat32Array(0.739837, 1)
+offsets = PackedFloat32Array(0.853659, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_r25v8"]
@@ -39,13 +39,6 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_ojyne"]
 gradient = SubResource("Gradient_ct1t3")
 
-[sub_resource type="Curve" id="Curve_h68s4"]
-_data = [Vector2(0.344156, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 2.51543, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_eiwk6"]
-curve = SubResource("Curve_h68s4")
-
 [sub_resource type="Curve" id="Curve_o0kbn"]
 _data = [Vector2(0, 0.431579), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -62,9 +55,8 @@ initial_velocity_min = 6.0
 initial_velocity_max = 7.0
 radial_accel_min = 10.0
 radial_accel_max = 10.0
-damping_min = 50.0
-damping_max = 60.0
-damping_curve = SubResource("CurveTexture_eiwk6")
+damping_min = 10.0
+damping_max = 20.0
 scale_min = 0.2
 scale_max = 0.2
 scale_curve = SubResource("CurveTexture_dqy3m")
@@ -82,6 +74,7 @@ particles_anim_loop = false
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_te7xb"]
 material = SubResource("StandardMaterial3D_aom20")
+size = Vector2(0.4, 0.4)
 orientation = 2
 
 [sub_resource type="Animation" id="Animation_6dwhb"]
@@ -113,7 +106,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_cd1w3"]
 resource_name = "new_animation"
-length = 4.0
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -121,7 +114,7 @@ tracks/0/path = NodePath("Trail:emitting")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8),
+"times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -133,7 +126,7 @@ tracks/1/path = NodePath("Explosion:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.8),
+"times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -145,7 +138,7 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(3.9),
+"times": PackedFloat32Array(1.9),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -159,12 +152,15 @@ _data = {
 "new_animation": SubResource("Animation_cd1w3")
 }
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_ccbhy"]
+radius = 0.1
+
 [node name="Firework" type="RigidBody3D"]
-gravity_scale = 0.0
+gravity_scale = -2.0
 
 [node name="Trail" type="GPUParticles3D" parent="."]
-amount = 9
-lifetime = 0.5
+amount = 4
+lifetime = 0.2
 process_material = SubResource("ParticleProcessMaterial_7g8uu")
 draw_pass_1 = SubResource("SphereMesh_eb7hy")
 
@@ -183,3 +179,6 @@ autoplay = "new_animation"
 libraries = {
 "": SubResource("AnimationLibrary_6l1mc")
 }
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_ccbhy")

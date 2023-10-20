@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://ciwrc3cnluwux"]
+[gd_scene load_steps=9 format=3 uid="uid://ciwrc3cnluwux"]
 
 [ext_resource type="Script" path="res://ktosox/holding_hat.gd" id="1_als87"]
+[ext_resource type="AudioStream" uid="uid://b0t7tyu0rftjd" path="res://SFX/woosh 2.wav" id="2_ilwpn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_unngh"]
 albedo_color = Color(0.258824, 0.258824, 0.145098, 1)
@@ -135,6 +136,10 @@ libraries = {
 "": SubResource("AnimationLibrary_u2wk6")
 }
 
+[node name="Throw" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_ilwpn")
+
 [connection signal="body_entered" from="InteractionBox" to="." method="_on_interaction_box_body_entered"]
 [connection signal="body_exited" from="InteractionBox" to="." method="_on_interaction_box_body_exited"]
 [connection signal="child_order_changed" from="ItemHolder/Slot1" to="." method="_on_slot_1_child_order_changed"]
+[connection signal="finished" from="Throw" to="." method="_on_throw_finished"]

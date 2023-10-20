@@ -1411,5 +1411,9 @@ anim_player = NodePath("../witch_animation/AnimationPlayer")
 active = true
 script = ExtResource("5_fsu7p")
 
+[node name="AudioListener3D" type="AudioListener3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+current = true
+
 [editable path="HoldingHat"]
 [editable path="witch_animation"]

@@ -73,7 +73,9 @@ func consume(item:RigidBody3D):
 	var firework = fireworkScene.instantiate()
 	firework.global_position = $Output.global_position
 	add_child(firework)
-	firework.apply_central_impulse(Vector3(0,5,0).rotated(Vector3(0,1,0),randf()*2*PI))
+	firework.apply_central_impulse(Vector3(1,1,0).rotated(Vector3(0,1,0),randf()*2*PI))
+	
+	
 	
 	if itemMemory.size()>2:
 		puke()
@@ -88,7 +90,7 @@ func puke():
 			testedRecipie.erase(I)
 		if testedRecipie.is_empty():
 			result = validRecipies[R]
-				
+
 	itemMemory.clear()
 	var resultItem = itemToItemTypeMap[result].instantiate()
 	resultItem.global_position = $Output.global_position
@@ -102,4 +104,14 @@ func puke():
 
 func _on_item_path_moving_complete(item):
 	consume(item)
+	pass # Replace with function body.
+
+
+
+func _on_bubbling_finished():
+	$Bubbling.volume_db = 0
+	$Bubbling.stream = load("res://SFX/bubbles "+str(2+randi()%4)+".wav")
+	
+	$Bubbling.call_deferred("play")
+	$Bubbles.emitting = true
 	pass # Replace with function body.

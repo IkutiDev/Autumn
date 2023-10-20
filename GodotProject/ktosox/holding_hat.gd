@@ -48,6 +48,7 @@ func yeet(item:RigidBody3D):
 	item.freeze = false
 	item.apply_central_impulse(Vector3(4,0,0).rotated(Vector3(0,1,0),global_rotation.y))
 	#heldItem = null
+	$Throw.play()
 	update_glow_state() # since what is in slot 1 changed
 	pass
 
@@ -115,4 +116,13 @@ func _on_slot_1_child_order_changed():
 			heldItem = null
 
 	update_glow_state()
+	pass # Replace with function body.
+
+
+func _on_throw_finished():
+	$Throw.pitch_scale = 1.2+randf()*0.35
+	if bool(randi()%2):
+		$Throw.stream = load("res://SFX/woosh 2.wav")
+	else:
+		$Throw.stream = load("res://SFX/woosh 8.wav")
 	pass # Replace with function body.

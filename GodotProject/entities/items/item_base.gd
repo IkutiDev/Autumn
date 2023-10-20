@@ -63,3 +63,11 @@ func update_glow(heldItem):
 	else:
 		$Highlight.emitting = true
 	pass
+
+
+func _on_body_entered(body):
+	if !$Drop.playing:
+		$Drop.pitch_scale = 1.2 + randf()*0.5
+		$Drop.stream = load("res://SFX/body fall "+str(5+randi()%2)+".wav")
+		$Drop.play()
+	pass # Replace with function body.

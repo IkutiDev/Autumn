@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://brbksp2l0t2o3"]
+[gd_scene load_steps=41 format=3 uid="uid://brbksp2l0t2o3"]
 
 [ext_resource type="Script" path="res://entities/pot/pot.gd" id="1_gv73w"]
 [ext_resource type="PackedScene" uid="uid://cxp55nlpryw84" path="res://ktosox/le_item_mover.tscn" id="2_eqkam"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://bay7vrmt1ora3" path="res://entities/items/food/mushroom_jelly.tscn" id="17_b7lej"]
 [ext_resource type="PackedScene" uid="uid://y852j31wdn2u" path="res://entities/items/food/spaghetti.tscn" id="18_yy6gd"]
 [ext_resource type="PackedScene" uid="uid://dx4wjxdx8bvt6" path="res://entities/selection_box.tscn" id="19_0j32w"]
+[ext_resource type="AudioStream" uid="uid://dnqjbxp3fvwcq" path="res://SFX/bubbles 3.wav" id="21_l1by7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k8haf"]
 albedo_color = Color(0.168627, 0.168627, 0.168627, 1)
@@ -90,6 +91,43 @@ material = SubResource("StandardMaterial3D_bunyw")
 radial_segments = 8
 rings = 4
 
+[sub_resource type="Gradient" id="Gradient_kau8a"]
+offsets = PackedFloat32Array(0.861789, 0.934959)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_c1w6m"]
+gradient = SubResource("Gradient_kau8a")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_07u52"]
+emission_shape = 1
+emission_sphere_radius = 0.5
+direction = Vector3(0, 1, 0)
+spread = 20.0
+gravity = Vector3(0, 5, 0)
+initial_velocity_min = 3.0
+initial_velocity_max = 4.0
+radial_accel_min = -2.0
+radial_accel_max = 1.0
+damping_min = 3.0
+damping_max = 7.0
+scale_max = 1.5
+color_ramp = SubResource("GradientTexture1D_c1w6m")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_idiks"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.329412, 1, 0.407843, 0.65098)
+metallic = 1.0
+metallic_specular = 0.0
+roughness = 0.38
+
+[sub_resource type="SphereMesh" id="SphereMesh_1it7o"]
+material = SubResource("StandardMaterial3D_idiks")
+radius = 0.025
+height = 0.05
+radial_segments = 8
+rings = 4
+
 [node name="Pot" type="RigidBody3D" groups=["Interact"]]
 collision_layer = 10
 collision_mask = 8
@@ -134,4 +172,21 @@ transform_align = 2
 process_material = SubResource("ParticleProcessMaterial_6a5r4")
 draw_pass_1 = SubResource("SphereMesh_kvbkx")
 
+[node name="Bubbling" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("21_l1by7")
+volume_db = -80.0
+pitch_scale = 0.5
+autoplay = true
+
+[node name="Bubbles" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.445908, 0)
+emitting = false
+amount = 9
+lifetime = 0.9
+one_shot = true
+explosiveness = 0.9
+process_material = SubResource("ParticleProcessMaterial_07u52")
+draw_pass_1 = SubResource("SphereMesh_1it7o")
+
 [connection signal="moving_complete" from="ItemPath" to="." method="_on_item_path_moving_complete"]
+[connection signal="finished" from="Bubbling" to="." method="_on_bubbling_finished"]

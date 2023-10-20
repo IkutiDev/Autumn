@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://d14apuv0cuex"]
+
+[ext_resource type="Shader" path="res://ktosox/shaders/edge_detector.gdshader" id="1_rtpe1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y4vjh"]
+render_priority = 0
+shader = ExtResource("1_rtpe1")
+shader_parameter/shadow_color = Color(0.909804, 0.439216, 0.603922, 1)
+shader_parameter/shadow_thickness = 1.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_eeq6q"]
+material = SubResource("ShaderMaterial_y4vjh")
+
+[node name="EdgeDetector" type="MeshInstance3D"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+mesh = SubResource("QuadMesh_eeq6q")

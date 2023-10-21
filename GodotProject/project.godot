@@ -21,6 +21,7 @@ boot_splash/minimum_display_time=2
 
 GameManager="*res://core/game_manager.tscn"
 InputManager="*res://core/input_manager.tscn"
+RecipeManager="*res://ktosox/recipe_manager.tscn"
 
 [display]
 

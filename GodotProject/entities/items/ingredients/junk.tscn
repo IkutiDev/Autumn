@@ -3,5 +3,5 @@
 [ext_resource type="PackedScene" uid="uid://kqu0naaa3i62" path="res://entities/items/item_base.tscn" id="1_sd5ta"]
 
 [node name="Junk" instance=ExtResource("1_sd5ta")]
-type = 16
+type = 19
 isReagent = false

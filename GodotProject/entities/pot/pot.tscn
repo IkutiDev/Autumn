@@ -99,6 +99,7 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 gradient = SubResource("Gradient_kau8a")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_07u52"]
+lifetime_randomness = 0.4
 emission_shape = 1
 emission_sphere_radius = 0.5
 direction = Vector3(0, 1, 0)
@@ -108,8 +109,8 @@ initial_velocity_min = 3.0
 initial_velocity_max = 4.0
 radial_accel_min = -2.0
 radial_accel_max = 1.0
-damping_min = 3.0
-damping_max = 7.0
+damping_min = 5.0
+damping_max = 8.0
 scale_max = 1.5
 color_ramp = SubResource("GradientTexture1D_c1w6m")
 
@@ -134,7 +135,7 @@ collision_mask = 8
 freeze = true
 freeze_mode = 1
 script = ExtResource("1_gv73w")
-allRelevantItems = Array[PackedScene]([ExtResource("2_rlkwm"), ExtResource("3_mf85v"), ExtResource("4_j6qtj"), ExtResource("5_5t8if"), ExtResource("6_qsg72"), ExtResource("7_ilsg3"), ExtResource("8_rouxf"), ExtResource("9_bnejn"), ExtResource("10_8sl03"), ExtResource("11_6qpca"), ExtResource("12_6ne7o"), ExtResource("13_x3j8i"), ExtResource("14_bmix3"), ExtResource("15_umpqf"), ExtResource("16_6jvrc"), ExtResource("17_b7lej"), ExtResource("18_yy6gd")])
+allRelevantItems = Array[PackedScene]([ExtResource("2_rlkwm"), ExtResource("3_mf85v"), ExtResource("4_j6qtj"), ExtResource("5_5t8if"), ExtResource("6_qsg72"), ExtResource("7_ilsg3"), ExtResource("8_rouxf"), ExtResource("9_bnejn"), ExtResource("10_8sl03"), ExtResource("11_6qpca"), ExtResource("12_6ne7o"), ExtResource("13_x3j8i"), ExtResource("14_bmix3"), ExtResource("15_umpqf"), ExtResource("16_6jvrc"), ExtResource("17_b7lej"), ExtResource("18_yy6gd"), ExtResource("5_5t8if")])
 
 [node name="SelectionUpscale" type="Node3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -181,8 +182,8 @@ autoplay = true
 [node name="Bubbles" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.445908, 0)
 emitting = false
-amount = 9
-lifetime = 0.9
+amount = 12
+lifetime = 1.4
 one_shot = true
 explosiveness = 0.9
 process_material = SubResource("ParticleProcessMaterial_07u52")

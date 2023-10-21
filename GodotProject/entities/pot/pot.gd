@@ -4,18 +4,6 @@ var eating = false
 
 var itemMemory = []
 
-var validRecipies = {
-	[ItemBase.ITEM_TYPE.Apple,ItemBase.ITEM_TYPE.Water,ItemBase.ITEM_TYPE.Water] : ItemBase.ITEM_TYPE.BadApple,
-	[ItemBase.ITEM_TYPE.Mushroom,ItemBase.ITEM_TYPE.Mushroom,ItemBase.ITEM_TYPE.Water] : ItemBase.ITEM_TYPE.MushroomJelly,
-	[ItemBase.ITEM_TYPE.Bone,ItemBase.ITEM_TYPE.Water,ItemBase.ITEM_TYPE.Worm] : ItemBase.ITEM_TYPE.Muffin,
-	[ItemBase.ITEM_TYPE.Worm,ItemBase.ITEM_TYPE.Worm,ItemBase.ITEM_TYPE.Eye] : ItemBase.ITEM_TYPE.Spaghetti,
-	[ItemBase.ITEM_TYPE.Bone,ItemBase.ITEM_TYPE.Water,ItemBase.ITEM_TYPE.Apple] : ItemBase.ITEM_TYPE.Croissant,
-	[ItemBase.ITEM_TYPE.Bone,ItemBase.ITEM_TYPE.Water,ItemBase.ITEM_TYPE.Pumpkin] : ItemBase.ITEM_TYPE.Croissant,
-	[ItemBase.ITEM_TYPE.Bone,ItemBase.ITEM_TYPE.Water,ItemBase.ITEM_TYPE.Mandrake] : ItemBase.ITEM_TYPE.Croissant,
-	[ItemBase.ITEM_TYPE.Bone,ItemBase.ITEM_TYPE.Bone,ItemBase.ITEM_TYPE.Pumpkin] : ItemBase.ITEM_TYPE.Eclair,
-	[ItemBase.ITEM_TYPE.Bone,ItemBase.ITEM_TYPE.Bone,ItemBase.ITEM_TYPE.Eye] : ItemBase.ITEM_TYPE.EyePie,
-	[ItemBase.ITEM_TYPE.Bone,ItemBase.ITEM_TYPE.Mushroom,ItemBase.ITEM_TYPE.Mandrake] : ItemBase.ITEM_TYPE.DevilPie,
-}
 
 @export var allRelevantItems : Array[PackedScene] = []
 
@@ -84,12 +72,12 @@ func consume(item:RigidBody3D):
 func puke():
 	# some smart code for picking what item to make
 	var result = ItemBase.ITEM_TYPE.Junk
-	for R in validRecipies.keys():
+	for R in RecipeManager.allValidRecipies.keys():
 		var testedRecipie = R.duplicate()
 		for I in itemMemory:
 			testedRecipie.erase(I)
 		if testedRecipie.is_empty():
-			result = validRecipies[R]
+			result = RecipeManager.allValidRecipies[R]
 
 	itemMemory.clear()
 	var resultItem = itemToItemTypeMap[result].instantiate()

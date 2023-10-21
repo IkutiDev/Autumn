@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://bq6jns1wx5l4k"]
+
+[sub_resource type="Curve" id="Curve_70ram"]
+max_value = 10.0
+_data = [Vector2(0, 10), 0.0, -13.3158, 0, 0, Vector2(1, 0), -8.58204, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_tkexq"]
+curve = SubResource("Curve_70ram")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6pk1p"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.0
+emission_ring_radius = 2.0
+emission_ring_inner_radius = 1.0
+particle_flag_align_y = true
+gravity = Vector3(0, 30, 0)
+damping_min = 2.0
+damping_max = 3.0
+damping_curve = SubResource("CurveTexture_tkexq")
+
+[sub_resource type="Curve" id="Curve_ntq6h"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 0.04), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_54xcx"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.341176)
+emission_enabled = true
+emission = Color(1, 0.12549, 0.0862745, 1)
+emission_energy_multiplier = 3.0
+billboard_mode = 2
+billboard_keep_scale = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_bs16f"]
+material = SubResource("StandardMaterial3D_54xcx")
+shape = 0
+size = 2.0
+sections = 3
+section_length = 0.7
+section_segments = 1
+curve = SubResource("Curve_ntq6h")
+
+[node name="BeamsGoUp" type="GPUParticles3D"]
+amount = 20
+lifetime = 1.8
+explosiveness = 0.21
+randomness = 0.28
+process_material = SubResource("ParticleProcessMaterial_6pk1p")
+draw_pass_1 = SubResource("RibbonTrailMesh_bs16f")

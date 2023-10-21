@@ -2,6 +2,7 @@ extends Node3D
 
 @export_category("Grow Stats")
 @export var can_grow := true
+@export var seed_type : ItemBase.ITEM_TYPE
 @export var grow_time := 5.0
 @export var node_yield := 1
 @export var node_life := -1
@@ -9,10 +10,11 @@ extends Node3D
 @export var spawn_item_offset := Vector3(0,2,0)
 @export_group("References")
 @export var interaction_area : Area3D
-@export var visual_mesh_instance : MeshInstance3D
+@export var visual_mesh_parent_node : Node3D
 @export var plant_mesh_instance : MeshInstance3D
 @export var grow_time_label : Label3D
 @export var animation_player : AnimationPlayer
+@export var le_item_mover : ItemMover
 
 var base_color : Color
 var player : Player
@@ -31,12 +33,16 @@ func _enter_tree():
 func _ready():
 	if not can_grow:
 		harvestable = true
-	if not is_growing and animation_player != null:	
-		animation_player.stop()
+	else:
+		visual_mesh_parent_node.scale = Vector3.ZERO
+	if animation_player != null:	
+		animation_player.pause()
 	InputManager.interact.connect(interaction)
 #	base_color = visual_mesh_instance.mesh.material.albedo_color
 	interaction_area.body_entered.connect(select)
 	interaction_area.body_exited.connect(deselect)
+	
+	le_item_mover.moving_complete.connect(start_growing)
 
 func _exit_tree():
 	InputManager.interact.disconnect(interaction)
@@ -56,14 +62,14 @@ func deselect(body : Node3D):
 
 	
 func _process(delta):
+	if animation_player != null and player == null:	
+		animation_player.pause()
 	if growing_timer > 0:
 		grow_time_label.text = "Grow time:"+"%.2f" % (growing_timer)
 		growing_timer -= delta
 		if growing_timer <= 0:
 			harvestable = true
 			is_growing = false
-	if can_grow:
-		plant_mesh_instance.visible = harvestable
 	
 func interaction() -> void:
 	
@@ -73,11 +79,16 @@ func interaction() -> void:
 	if not player:
 		return
 	
-	if player.holding_hat.focusedEnitity != null or player.holding_hat.heldItem != null:
-		return
+	var heldItem = player.holding_hat.heldItem as ItemBase
 	
-	if can_grow:
-		plantable = player.has_correct_plant_item
+	if player.holding_hat.focusedEnitity != null or heldItem != null:
+		if not heldItem.isSeed:
+			return
+	
+	if can_grow and heldItem != null:
+		plantable = heldItem.isSeed and heldItem.type == seed_type
+	else:
+		plantable = false
 	
 	if harvestable:
 		for i in node_yield:
@@ -90,17 +101,21 @@ func interaction() -> void:
 				current_node_life -= 1
 				harvestable = false
 				if current_node_life > 0:
-					start_growing(false)
+					start_growing(null)
 			else:
 				harvestable = false
+			visual_mesh_parent_node.scale = Vector3.ZERO
 
 	elif plantable and not is_growing:
-		start_growing(true)
+		le_item_mover.move_item(heldItem)
+#		start_growing(true)
 
 
-func start_growing(restart_node_life : bool) -> void:
+func start_growing(seed_item : ItemBase) -> void:
 	is_growing = true
-#	visual_mesh_instance.mesh.material.albedo_color = Color("Red")
 	growing_timer = grow_time
-	if restart_node_life:
+	var tween = get_tree().create_tween()
+	tween.tween_property(visual_mesh_parent_node, "scale", Vector3.ONE, grow_time)
+	tween.play()
+	if seed_item != null:
 		current_node_life = node_life

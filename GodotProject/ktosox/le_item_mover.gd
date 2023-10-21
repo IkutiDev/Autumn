@@ -1,3 +1,4 @@
+class_name ItemMover
 extends Path3D
 
 signal moving_complete(item)

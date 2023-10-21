@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bnct3kfm7wv45"]
+
+[resource]
+resource_name = "items"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+metallic = 1.0

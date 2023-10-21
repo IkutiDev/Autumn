@@ -3,11 +3,13 @@ extends RigidBody3D
 
 enum ITEM_TYPE {Apple, Pumpkin, Mandrake, Mushroom, Water, Bone, Worm,Eye,
 Muffin, Eclair, BadApple, DevilPie, EyePie, Spaghetti, Croissant, MushroomJelly,
+PumpkinSeed, WormSeed, MushroomSeed,
 Junk}
 
 @export var type : ITEM_TYPE
 
 @export var isReagent = true
+@export var isSeed = false
 
 @export_group("References")
 @export var item_label : Label3D

@@ -28,5 +28,16 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={}
-gltf/embedded_image_handling=1
+_subresources={
+"materials": {
+"Material.009": {
+"use_external/enabled": false,
+"use_external/path": "res://world/garden.tres"
+},
+"Material.010": {
+"use_external/enabled": false,
+"use_external/path": "res://world/garden.tres"
+}
+}
+}
+gltf/embedded_image_handling=3

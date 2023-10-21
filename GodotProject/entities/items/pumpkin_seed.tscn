@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyxaaq4lb3kwl"]
+
+[ext_resource type="PackedScene" uid="uid://kqu0naaa3i62" path="res://entities/items/item_base.tscn" id="1_ggmot"]
+
+[node name="PumpkinSeed" instance=ExtResource("1_ggmot")]
+type = 16
+isReagent = false
+isSeed = true

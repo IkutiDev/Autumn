@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bb2pavjfpxft5"]
+
+[ext_resource type="Script" path="res://ktosox/recipe_manager.gd" id="1_griy3"]
+
+[node name="RecipeManager" type="Node"]
+script = ExtResource("1_griy3")

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bp8l3hkrf7xhv"]
+
+[ext_resource type="Script" path="res://world/customer_queue.gd" id="1_51rbn"]
+[ext_resource type="PackedScene" uid="uid://ctvn7ntfk6sgk" path="res://characters/clients/customer.tscn" id="2_hcty0"]
+
+[sub_resource type="Curve3D" id="Curve3D_8pqhr"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 12.583, -2.5, -1.957, 0, 0, 0, 0, 0, 0, 8.436, -2.5, -1.571, 0, 0, 0, 0, 0, 0, -0.489, -2.5, 0.594, 0, 0, 0, 0, 0, 0, -0.489, -0.835, -2.751, 0, 0, 0, 0, 0, 0, -0.489, -0.835, -4.126, 0, 0, 0, 0, 0, 0, -1.729, -0.835, -4.536, 0, 0, 0, 0, 0, 0, -1.729, -0.835, -5.026),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
+
+[node name="CustomerQueue" type="Node3D" node_paths=PackedStringArray("path3D")]
+script = ExtResource("1_51rbn")
+customer_scene = ExtResource("2_hcty0")
+customer_speed = 0.2
+path3D = NodePath("Path3D")
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.32442)
+curve = SubResource("Curve3D_8pqhr")

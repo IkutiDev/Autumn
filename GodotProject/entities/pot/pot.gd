@@ -17,7 +17,7 @@ var fireworkScene = preload("res://particles/firework.tscn")
 func _ready():
 	for A in allRelevantItems:
 		itemToItemTypeMap[A.instantiate().type] = A
-
+	$Bubbling.play()
 	pass # Replace with function body.
 
 func interact():
@@ -97,9 +97,9 @@ func _on_item_path_moving_complete(item):
 
 
 func _on_bubbling_finished():
+	print("buble")
 	$Bubbling.volume_db = 0
-	$Bubbling.stream = load("res://SFX/bubbles "+str(2+randi()%4)+".wav")
 	
-	$Bubbling.call_deferred("play")
 	$Bubbles.emitting = true
+	$Bubbling.call_deferred("play")
 	pass # Replace with function body.

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bh8xsb5rgwikw"]
+
+[ext_resource type="PackedScene" uid="uid://kqu0naaa3i62" path="res://entities/items/item_base.tscn" id="1_7b3x2"]
+
+[node name="MushroomSeed" instance=ExtResource("1_7b3x2")]
+type = 18
+
+[node name="SelectionBox" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.2, 0)

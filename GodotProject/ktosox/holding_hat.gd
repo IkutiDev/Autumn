@@ -118,11 +118,3 @@ func _on_slot_1_child_order_changed():
 	update_glow_state()
 	pass # Replace with function body.
 
-
-func _on_throw_finished():
-	$Throw.pitch_scale = 1.2+randf()*0.35
-	if bool(randi()%2):
-		$Throw.stream = load("res://SFX/woosh 2.wav")
-	else:
-		$Throw.stream = load("res://SFX/woosh 8.wav")
-	pass # Replace with function body.

@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://kqu0naaa3i62"]
+[gd_scene load_steps=11 format=3 uid="uid://kqu0naaa3i62"]
 
 [ext_resource type="Script" path="res://entities/items/item_base.gd" id="1_roo1k"]
 [ext_resource type="PackedScene" uid="uid://dx4wjxdx8bvt6" path="res://entities/selection_box.tscn" id="2_7hl6j"]
 [ext_resource type="PackedScene" uid="uid://by70pum28hewx" path="res://entities/highlight.tscn" id="2_733l4"]
+[ext_resource type="PackedScene" uid="uid://cdk5on28jwoqr" path="res://SFX/multi_3D_player.tscn" id="4_7gmft"]
 [ext_resource type="AudioStream" uid="uid://ce7dm7hdclqup" path="res://SFX/body fall 5.wav" id="4_0544v"]
+[ext_resource type="AudioStream" uid="uid://cgdsf1r68ixaf" path="res://SFX/body fall 6.wav" id="7_6p5by"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_equfn"]
 bounce = 0.4
@@ -45,8 +47,8 @@ text = "Name"
 [node name="SelectionBox" parent="." instance=ExtResource("2_7hl6j")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.2, 0)
 
-[node name="Drop" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("4_0544v")
-pitch_scale = 1.7
+[node name="Drop" parent="." instance=ExtResource("4_7gmft")]
+pitch_scale = 1.2
+playedTracks = Array[Resource]([ExtResource("4_0544v"), ExtResource("7_6p5by")])
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

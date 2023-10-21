@@ -1,7 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://dmqfpekayuijs"]
+[gd_scene load_steps=3 format=3 uid="uid://dmqfpekayuijs"]
 
 [ext_resource type="PackedScene" uid="uid://kqu0naaa3i62" path="res://entities/items/item_base.tscn" id="1_8l06e"]
+[ext_resource type="PackedScene" uid="uid://df46c3hmxp3nu" path="res://entities/items/food/rogal.glb" id="2_ce8ou"]
 
 [node name="Croissant" instance=ExtResource("1_8l06e")]
 type = 14
 isReagent = false
+
+[node name="MeshInstance3D" parent="." index="2"]
+visible = false
+
+[node name="SelectionBox" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.2, 0)
+
+[node name="rogal" parent="." index="6" instance=ExtResource("2_ce8ou")]
+transform = Transform3D(0.371222, -0.928544, 0, 0.916921, 0.366575, 0.157727, -0.146457, -0.0585517, 0.987483, 0.0784003, -0.0449448, -0.143917)

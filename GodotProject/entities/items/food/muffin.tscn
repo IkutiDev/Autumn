@@ -1,7 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://bcravt3mjleqo"]
+[gd_scene load_steps=3 format=3 uid="uid://bcravt3mjleqo"]
 
 [ext_resource type="PackedScene" uid="uid://kqu0naaa3i62" path="res://entities/items/item_base.tscn" id="1_wqsxa"]
+[ext_resource type="PackedScene" uid="uid://dhf8kdn1teeh7" path="res://entities/items/food/babeczka.glb" id="2_r566g"]
 
 [node name="Muffin" instance=ExtResource("1_wqsxa")]
 type = 8
 isReagent = false
+
+[node name="MeshInstance3D" parent="." index="2"]
+visible = false
+
+[node name="SelectionBox" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.2, 0)
+
+[node name="babeczka" parent="." index="6" instance=ExtResource("2_r566g")]
+transform = Transform3D(0.707107, 0.707107, 0, -0.698256, 0.698256, 0.157727, 0.11153, -0.11153, 0.987483, 0, -0.209619, 0)

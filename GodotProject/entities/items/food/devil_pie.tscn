@@ -1,10 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://k323xfyk82mu"]
+[gd_scene load_steps=3 format=3 uid="uid://k323xfyk82mu"]
 
 [ext_resource type="PackedScene" uid="uid://kqu0naaa3i62" path="res://entities/items/item_base.tscn" id="1_qlgiq"]
+[ext_resource type="PackedScene" uid="uid://csxleg5w4pb1n" path="res://entities/items/food/placek z diabelski.glb" id="2_gep4m"]
 
 [node name="DevilPie" instance=ExtResource("1_qlgiq")]
 type = 11
 isReagent = false
 
+[node name="MeshInstance3D" parent="." index="2"]
+visible = false
+
 [node name="SelectionBox" parent="." index="4"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.2, 0)
+
+[node name="placek z diabelski" parent="." index="6" instance=ExtResource("2_gep4m")]
+transform = Transform3D(0.940122, 0.340839, 0, -0.336573, 0.928354, 0.157727, 0.0537596, -0.148283, 0.987483, 0.0984576, -0.121939, 0)

@@ -14,6 +14,8 @@ extends Node3D
 @export var plant_mesh_instance : MeshInstance3D
 @export var grow_time_label : Label3D
 @export var animation_player : AnimationPlayer
+@export var loop_anim : String
+@export var grown_anim : String
 @export var le_item_mover : ItemMover
 
 var base_color : Color
@@ -33,8 +35,6 @@ func _enter_tree():
 func _ready():
 	if not can_grow:
 		harvestable = true
-	else:
-		visual_mesh_parent_node.scale = Vector3.ZERO
 	if animation_player != null:	
 		animation_player.pause()
 	InputManager.interact.connect(interaction)
@@ -52,13 +52,15 @@ func _exit_tree():
 
 func select(body : Node3D):
 	player = body as Player	
-	if not is_growing and animation_player != null:	
-		animation_player.play()
+	if animation_player != null:	
+		if harvestable:
+			animation_player.play(loop_anim)
 	
 func deselect(body : Node3D):
 	player = null	
-	if not is_growing and animation_player != null:	
-		animation_player.stop()
+	if  animation_player != null:	
+		if animation_player.current_animation == loop_anim:
+			animation_player.stop()
 
 	
 func _process(delta):
@@ -104,7 +106,6 @@ func interaction() -> void:
 					start_growing(null)
 			else:
 				harvestable = false
-			visual_mesh_parent_node.scale = Vector3.ZERO
 
 	elif plantable and not is_growing:
 		le_item_mover.move_item(heldItem)
@@ -114,8 +115,6 @@ func interaction() -> void:
 func start_growing(seed_item : ItemBase) -> void:
 	is_growing = true
 	growing_timer = grow_time
-	var tween = get_tree().create_tween()
-	tween.tween_property(visual_mesh_parent_node, "scale", Vector3.ONE, grow_time)
-	tween.play()
+	animation_player.play(grown_anim)
 	if seed_item != null:
 		current_node_life = node_life

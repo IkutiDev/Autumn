@@ -30,9 +30,9 @@ animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
 "materials": {
-"Material.006": {
+"wiaderko": {
 "use_external/enabled": true,
-"use_external/path": "res://entities/items/ingredients/items.tres"
+"use_external/path": "res://entities/items/ingredients/wiaderko.tres"
 }
 }
 }

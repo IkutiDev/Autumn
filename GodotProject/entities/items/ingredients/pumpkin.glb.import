@@ -30,13 +30,13 @@ animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
 "materials": {
-"Material.009": {
-"use_external/enabled": false,
-"use_external/path": "res://world/garden.tres"
+"Material.003": {
+"use_external/enabled": true,
+"use_external/path": "res://entities/items/ingredients/items.tres"
 },
-"Material.010": {
-"use_external/enabled": false,
-"use_external/path": "res://world/garden.tres"
+"Material.005": {
+"use_external/enabled": true,
+"use_external/path": "res://entities/items/ingredients/items.tres"
 }
 }
 }

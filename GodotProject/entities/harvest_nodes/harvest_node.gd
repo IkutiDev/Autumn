@@ -64,7 +64,7 @@ func deselect(body : Node3D):
 
 	
 func _process(delta):
-	if animation_player != null and player == null:	
+	if animation_player != null and player == null and not can_grow:	
 		animation_player.pause()
 	if growing_timer > 0:
 		grow_time_label.text = "Grow time:"+"%.2f" % (growing_timer)
@@ -106,6 +106,8 @@ func interaction() -> void:
 					start_growing(null)
 			else:
 				harvestable = false
+			animation_player.play(grown_anim)
+			animation_player.stop()
 
 	elif plantable and not is_growing:
 		le_item_mover.move_item(heldItem)

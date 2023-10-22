@@ -5,11 +5,12 @@ var allKnownRecipies = []
 
 func _ready():
 	RecipeManager.connect("unlocked_recipe",add_recipie)
-	RecipeManager.item_type_unlocked(4) # for testing
-	RecipeManager.item_type_unlocked(5) # for testing
+
+	
 
 
 func add_recipie(recipieArray):
+	print("test")
 	$Highlight.emitting = true
 	allKnownRecipies.push_back(recipieArray)
 	
@@ -39,4 +40,11 @@ func _on_touch_box_body_entered(body):
 	if !$Multi3DPlayer.playing:
 		$Multi3DPlayer.play()
 	$Highlight.emitting = false
+	pass # Replace with function body.
+
+
+func _on_timer_timeout():
+	RecipeManager.call_deferred("item_type_unlocked",0)
+	RecipeManager.call_deferred("item_type_unlocked",4)
+	RecipeManager.call_deferred("item_type_unlocked",5)
 	pass # Replace with function body.

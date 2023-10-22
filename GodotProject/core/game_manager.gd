@@ -22,9 +22,6 @@ var total_customers_done := 0
 func change_to_gameplay_scene() -> void:
 	get_tree().change_scene_to_packed(gameplay_scene)
 	$Afternoon._start()
-	RecipeManager.item_type_unlocked(ItemBase.ITEM_TYPE.Apple)
-	RecipeManager.item_type_unlocked(ItemBase.ITEM_TYPE.Water)
-	RecipeManager.item_type_unlocked(ItemBase.ITEM_TYPE.Bone)
 
 func change_to_main_menu_scene() -> void:
 	get_tree().change_scene_to_packed(main_menu_scene)

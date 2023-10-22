@@ -17,7 +17,7 @@ func item_type_unlocked(resourceType : ItemBase.ITEM_TYPE): # called when item t
 		for I in unlockedIngrediants:
 			while recipieHolder.has(I):
 				recipieHolder.erase(I)
-			print(recipieHolder)
+
 			if recipieHolder.size() == 0:
 				print("unlocked recpie: ",R)
 				emit_signal("unlocked_recipe",R)
@@ -50,7 +50,7 @@ var itemToItemTypeMap = {}
 
 @onready var recipiesToUnlock = allValidRecipies.duplicate() # each time a new resource is unlocked all copies of it are removed key
 
-var unlockedIngrediants = [0,1,2] # put the stuff the player starts with here
+var unlockedIngrediants = [] # put the stuff the player starts with here
 
 var unlockedFoods = []
 

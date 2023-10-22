@@ -1,0 +1,22 @@
+[gd_scene load_steps=15 format=3 uid="uid://ceds66l1y1pug"]
+
+[ext_resource type="PackedScene" uid="uid://ctvn7ntfk6sgk" path="res://characters/clients/customer.tscn" id="1_dbofa"]
+[ext_resource type="PackedScene" uid="uid://cnwe2ryaueoac" path="res://entities/items/ingredients/eye.tscn" id="2_02xep"]
+[ext_resource type="PackedScene" uid="uid://bonbmdplacwpe" path="res://entities/items/ingredients/mandrake.tscn" id="3_2siap"]
+[ext_resource type="PackedScene" uid="uid://cyxaaq4lb3kwl" path="res://entities/items/pumpkin_seed.tscn" id="4_c27g3"]
+[ext_resource type="PackedScene" uid="uid://b37xkiv6g0rmw" path="res://entities/items/worm_seed.tscn" id="5_m153y"]
+[ext_resource type="PackedScene" uid="uid://bh8xsb5rgwikw" path="res://entities/items/mushroom_seed.tscn" id="6_2ski6"]
+[ext_resource type="PackedScene" uid="uid://bmflwiopd333r" path="res://entities/items/food/bad_apple.tscn" id="7_2dtst"]
+[ext_resource type="PackedScene" uid="uid://dmqfpekayuijs" path="res://entities/items/food/croissant.tscn" id="8_na7xy"]
+[ext_resource type="PackedScene" uid="uid://bay7vrmt1ora3" path="res://entities/items/food/mushroom_jelly.tscn" id="9_80yyc"]
+[ext_resource type="PackedScene" uid="uid://bcravt3mjleqo" path="res://entities/items/food/muffin.tscn" id="10_ikpcv"]
+[ext_resource type="PackedScene" uid="uid://cwn2idfis3fwv" path="res://entities/items/food/eclair.tscn" id="11_td8vl"]
+[ext_resource type="PackedScene" uid="uid://djl5hbaimwhr5" path="res://entities/items/food/eye_pie.tscn" id="12_xfopf"]
+[ext_resource type="PackedScene" uid="uid://y852j31wdn2u" path="res://entities/items/food/spaghetti.tscn" id="13_lncu8"]
+[ext_resource type="PackedScene" uid="uid://k323xfyk82mu" path="res://entities/items/food/devil_pie.tscn" id="14_dvmp8"]
+
+[node name="CustomerThree" instance=ExtResource("1_dbofa")]
+allItemsOffered = Array[PackedScene]([ExtResource("2_02xep"), ExtResource("3_2siap"), ExtResource("4_c27g3"), ExtResource("5_m153y"), ExtResource("6_2ski6")])
+allItemsWanted = Array[PackedScene]([ExtResource("7_2dtst"), ExtResource("8_na7xy"), ExtResource("9_80yyc"), ExtResource("10_ikpcv"), ExtResource("11_td8vl"), ExtResource("12_xfopf"), ExtResource("13_lncu8"), ExtResource("14_dvmp8")])
+
+[editable path="all in one_ client"]

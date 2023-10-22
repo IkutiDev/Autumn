@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" path="res://core/end_day_screen.gd" id="1_42oe0"]
 
-[node name="EndDayScreen" type="CanvasLayer"]
+[node name="EndDayScreen" type="CanvasLayer" node_paths=PackedStringArray("customers_sated_number")]
 script = ExtResource("1_42oe0")
+customers_sated_number = NodePath("ColorRect/Label2")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15

@@ -1,0 +1,17 @@
+[gd_scene load_steps=10 format=3 uid="uid://ctsnuxfx7y6g5"]
+
+[ext_resource type="PackedScene" uid="uid://ctvn7ntfk6sgk" path="res://characters/clients/customer.tscn" id="1_qimp5"]
+[ext_resource type="PackedScene" uid="uid://cyxaaq4lb3kwl" path="res://entities/items/pumpkin_seed.tscn" id="2_3b3iy"]
+[ext_resource type="PackedScene" uid="uid://b37xkiv6g0rmw" path="res://entities/items/worm_seed.tscn" id="3_ms88t"]
+[ext_resource type="PackedScene" uid="uid://bh8xsb5rgwikw" path="res://entities/items/mushroom_seed.tscn" id="4_mt4ep"]
+[ext_resource type="PackedScene" uid="uid://bmflwiopd333r" path="res://entities/items/food/bad_apple.tscn" id="4_wqskm"]
+[ext_resource type="PackedScene" uid="uid://dmqfpekayuijs" path="res://entities/items/food/croissant.tscn" id="5_pxdn7"]
+[ext_resource type="PackedScene" uid="uid://bay7vrmt1ora3" path="res://entities/items/food/mushroom_jelly.tscn" id="6_00hk0"]
+[ext_resource type="PackedScene" uid="uid://bcravt3mjleqo" path="res://entities/items/food/muffin.tscn" id="7_0unyn"]
+[ext_resource type="PackedScene" uid="uid://cwn2idfis3fwv" path="res://entities/items/food/eclair.tscn" id="8_ms1t5"]
+
+[node name="CustomerTwo" instance=ExtResource("1_qimp5")]
+allItemsOffered = Array[PackedScene]([ExtResource("2_3b3iy"), ExtResource("3_ms88t"), ExtResource("4_mt4ep")])
+allItemsWanted = Array[PackedScene]([ExtResource("4_wqskm"), ExtResource("5_pxdn7"), ExtResource("6_00hk0"), ExtResource("7_0unyn"), ExtResource("8_ms1t5")])
+
+[editable path="all in one_ client"]

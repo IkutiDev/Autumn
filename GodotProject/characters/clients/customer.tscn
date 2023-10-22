@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://characters/clients/client.gd" id="1_8qodt"]
 [ext_resource type="PackedScene" uid="uid://bx0mw4potkdhs" path="res://entities/items/ingredients/bone.tscn" id="2_3qnql"]
+[ext_resource type="PackedScene" uid="uid://b0pg3pm2etwqr" path="res://entities/items/ingredients/apple.tscn" id="2_iy46c"]
 [ext_resource type="PackedScene" uid="uid://elymmgtpjrc" path="res://characters/clients/all_in_one__client.tscn" id="2_xxc38"]
-[ext_resource type="PackedScene" uid="uid://cnwe2ryaueoac" path="res://entities/items/ingredients/eye.tscn" id="3_417wa"]
 [ext_resource type="Texture2D" uid="uid://dl6fn1b5frm08" path="res://characters/clients/ThoughtCloud.png" id="3_etya4"]
-[ext_resource type="PackedScene" uid="uid://c1cf2yc7l321q" path="res://entities/items/ingredients/junk.tscn" id="4_1hlc0"]
+[ext_resource type="PackedScene" uid="uid://dy1tqjucclw1o" path="res://entities/items/ingredients/poison_water.tscn" id="4_yuacr"]
 [ext_resource type="PackedScene" uid="uid://bmflwiopd333r" path="res://entities/items/food/bad_apple.tscn" id="5_nj4yk"]
 [ext_resource type="PackedScene" uid="uid://dmqfpekayuijs" path="res://entities/items/food/croissant.tscn" id="6_j054s"]
 
@@ -2123,7 +2123,7 @@ size = Vector3(0.4, 0.4, 0.4)
 [node name="Customer" type="Node3D" node_paths=PackedStringArray("animation_player", "desired_item_sprite") groups=["Customer"]]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 script = ExtResource("1_8qodt")
-allItemsOffered = Array[PackedScene]([ExtResource("2_3qnql"), ExtResource("3_417wa"), ExtResource("4_1hlc0")])
+allItemsOffered = Array[PackedScene]([ExtResource("2_iy46c"), ExtResource("2_3qnql"), ExtResource("4_yuacr")])
 allItemsWanted = Array[PackedScene]([ExtResource("5_nj4yk"), ExtResource("6_j054s")])
 animation_player = NodePath("all in one_ client/AnimationPlayer")
 desired_item_sprite = NodePath("DesiredItemPreview/Sprite3D")

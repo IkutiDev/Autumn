@@ -22,7 +22,10 @@ var current_player : Player = null
 
 func _ready():
 	if desiredItem == null:
-		desiredItem = allItemsWanted[randi()%allItemsWanted.size()]
+		if GameManager.current_day_customers_spawned <= 3:
+			desiredItem = allItemsWanted[randi()%2]
+		else:
+			desiredItem = allItemsWanted[randi()%allItemsWanted.size()]
 	if broughtItem == null:
 		broughtItem = allItemsOffered[randi()%allItemsOffered.size()]
 

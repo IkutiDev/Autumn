@@ -1,24 +1,29 @@
-[gd_scene load_steps=8 format=3 uid="uid://cpigqijd30sha"]
+[gd_scene load_steps=11 format=3 uid="uid://cpigqijd30sha"]
 
 [ext_resource type="Script" path="res://core/game_manager.gd" id="1_55ctj"]
 [ext_resource type="PackedScene" uid="uid://b4g1xr6srv8yo" path="res://GUI/main_menu.tscn" id="2_e86d4"]
+[ext_resource type="PackedScene" uid="uid://us2nh106kn26" path="res://GUI/game_over.tscn" id="3_jipgq"]
 [ext_resource type="PackedScene" uid="uid://dtbmjdiy51vqd" path="res://world/world.tscn" id="3_p11pg"]
 [ext_resource type="PackedScene" uid="uid://ctvn7ntfk6sgk" path="res://characters/clients/customer.tscn" id="4_j0skb"]
 [ext_resource type="Script" path="res://core/Afternoon.gd" id="4_jyggy"]
+[ext_resource type="PackedScene" uid="uid://ctsnuxfx7y6g5" path="res://characters/clients/customer_two.tscn" id="5_1fiyh"]
 [ext_resource type="Script" path="res://core/Evening.gd" id="5_i2vmh"]
+[ext_resource type="PackedScene" uid="uid://ceds66l1y1pug" path="res://characters/clients/customer_three.tscn" id="6_i0mg6"]
 [ext_resource type="Script" path="res://core/Night.gd" id="6_uxxg4"]
 
-[node name="GameManager" type="Node"]
+[node name="GameManager" type="Node" node_paths=PackedStringArray("evening")]
 script = ExtResource("1_55ctj")
 main_menu_scene = ExtResource("2_e86d4")
+game_over_scene = ExtResource("3_jipgq")
 gameplay_scene = ExtResource("3_p11pg")
 customers_to_complete = PackedInt32Array(5, 7, 10, 13, 17, 23, 30, 38, 45, 60)
-customers_to_spawn = Array[PackedScene]([ExtResource("4_j0skb")])
+customers_to_spawn = Array[PackedScene]([ExtResource("4_j0skb"), ExtResource("5_1fiyh"), ExtResource("6_i0mg6"), ExtResource("6_i0mg6"), ExtResource("6_i0mg6"), ExtResource("6_i0mg6"), ExtResource("6_i0mg6"), ExtResource("6_i0mg6"), ExtResource("6_i0mg6"), ExtResource("6_i0mg6")])
+evening = NodePath("Evening")
 
 [node name="Afternoon" type="Node" parent="."]
 script = ExtResource("4_jyggy")
 cycle_name = "Afternoon"
-howMuchLasts = 2
+howMuchLasts = 20
 nextCycle = NodePath("../Evening")
 
 [node name="Evening" type="Node" parent="."]

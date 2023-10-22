@@ -51,6 +51,7 @@ func _process(delta):
 	if customer_spawn_timer > 0:
 		customer_spawn_timer -= delta
 		if customer_spawn_timer <= 0:
+			GameManager.current_day_customers_spawned += 1
 			var path_follower = PathFollow3D.new()
 			path3D.add_child(path_follower)
 			path_follower.loop = false

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bqgckcbxgu6y4"
+path="res://.godot/imported/DavidKBD - Spooky Pack - Spooky Playtime-01 - Ghostly Grooves.ogg-f4154527d691e327c1f8cd55e30d0c9d.oggvorbisstr"
+
+[deps]
+
+source_file="res://music/DavidKBD - Spooky Pack - Spooky Playtime-01 - Ghostly Grooves.ogg"
+dest_files=["res://.godot/imported/DavidKBD - Spooky Pack - Spooky Playtime-01 - Ghostly Grooves.ogg-f4154527d691e327c1f8cd55e30d0c9d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

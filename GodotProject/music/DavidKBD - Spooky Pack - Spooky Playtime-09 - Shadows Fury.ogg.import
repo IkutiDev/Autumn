@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bshkiss8ici85"
+path="res://.godot/imported/DavidKBD - Spooky Pack - Spooky Playtime-09 - Shadows Fury.ogg-d7a91b27eba980406abe2981eebbb444.oggvorbisstr"
+
+[deps]
+
+source_file="res://music/DavidKBD - Spooky Pack - Spooky Playtime-09 - Shadows Fury.ogg"
+dest_files=["res://.godot/imported/DavidKBD - Spooky Pack - Spooky Playtime-09 - Shadows Fury.ogg-d7a91b27eba980406abe2981eebbb444.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -17,6 +17,7 @@ var broughtItemNode
 @export_group("References")
 @export var animation_player : AnimationPlayer
 
+var current_player : Player = null
 
 func _ready():
 	if desiredItem == null:
@@ -31,6 +32,8 @@ func _ready():
 	desiredItemNode.freeze = true
 	$DesiredItemPreview.add_child(desiredItemNode)
 	$OfferedItemPreview.add_child(broughtItemNode)
+	
+	InputManager.reject_customer.connect(reject_customer)
 
 
 func update_animation(is_walking := false) -> void:
@@ -50,6 +53,7 @@ func give_gift():
 
 
 func _on_pickup_spot_body_entered(body):
+	current_player = body
 	var heldItem = get_tree().get_nodes_in_group("Hat")[0].get_held_item()
 	if heldItem == null:
 		return
@@ -57,3 +61,12 @@ func _on_pickup_spot_body_entered(body):
 		heldItem.queue_free()
 		give_gift()
 	pass # Replace with function body.
+
+
+func _on_pickup_spot_body_exited(body):
+	current_player = null
+
+func reject_customer() -> void:
+	if current_player == null:
+		return
+	remove_customer.emit(self)

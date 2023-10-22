@@ -7,8 +7,10 @@ extends Node3D
 
 @export_group("References")
 @export var path3D : Path3D
+@export var leaving_path3D : Path3D
 
 var active_customers : Array[PathFollow3D]
+var leaving_customers : Array[PathFollow3D]
 var customer_spawn_timer := 0.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,6 +30,13 @@ func _process(delta):
 			if customer.get_child(0) != null:
 				customer.get_child(0).update_animation(false)
 		
+	for i in range(leaving_customers.size() - 1, -1, -1):
+		var customer = leaving_customers[i]
+		customer.get_child(0).update_animation(true)
+		customer.progress_ratio += delta * customer_speed
+		if customer.progress_ratio >= 1.0:
+			leaving_customers.remove_at(i)
+			delete_customer(customer)
 	
 	if active_customers.size() >= 10:
 		return
@@ -47,4 +56,9 @@ func _process(delta):
 
 func remove_customer(customer : Node3D) -> void:
 	active_customers.erase(customer.get_parent())
-	customer.get_parent().queue_free()
+	leaving_customers.append(customer.get_parent())
+	customer.get_parent().progress_ratio = 0
+	customer.get_parent().reparent(leaving_path3D)
+
+func delete_customer(customer : PathFollow3D) -> void:
+	customer.queue_free()

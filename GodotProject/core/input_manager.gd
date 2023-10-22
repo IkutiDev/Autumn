@@ -3,6 +3,7 @@ extends Node
 signal movement(movement_vector)
 signal interact()
 signal drop()
+signal reject_customer()
 signal select_left_item()
 signal select_right_item()
 
@@ -20,6 +21,9 @@ func _input(event):
 		
 	if event.is_action_pressed("drop"):
 		drop.emit()
+		
+	if event.is_action_pressed("reject_customer"):
+		reject_customer.emit()
 		
 	if event.is_action_pressed("select_left_item"):
 		select_left_item.emit()

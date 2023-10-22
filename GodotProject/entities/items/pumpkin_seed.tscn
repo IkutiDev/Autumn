@@ -1,8 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://cyxaaq4lb3kwl"]
+[gd_scene load_steps=3 format=3 uid="uid://cyxaaq4lb3kwl"]
 
 [ext_resource type="PackedScene" uid="uid://kqu0naaa3i62" path="res://entities/items/item_base.tscn" id="1_ggmot"]
+[ext_resource type="PackedScene" uid="uid://cbf18rl0xd70r" path="res://entities/items/nasionka_dyni.glb" id="2_47dfc"]
 
 [node name="PumpkinSeed" instance=ExtResource("1_ggmot")]
 type = 16
 isReagent = false
 isSeed = true
+
+[node name="MeshInstance3D" parent="." index="2"]
+visible = false
+
+[node name="SelectionBox" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.2, 0)
+
+[node name="nasionka_dyni" parent="." index="6" instance=ExtResource("2_47dfc")]
+transform = Transform3D(0.22, 0, 0, 0, 0.375, 0, 0, 0, 0.11, 0, 0, 0)

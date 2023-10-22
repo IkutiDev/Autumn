@@ -4,6 +4,7 @@ var eating = false
 
 var itemMemory = []
 
+var isFull = true
 
 @export var allRelevantItems : Array[PackedScene] = []
 
@@ -15,13 +16,14 @@ var fireworkScene = preload("res://particles/firework.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	should_be_full(false)
 	for A in allRelevantItems:
 		itemToItemTypeMap[A.instantiate().type] = A
-	$Bubbling.play()
+
 	pass # Replace with function body.
 
 func interact():
-	if eating:
+	if eating or !isFull:
 		return
 	var itemHeldByHat = get_tree().get_nodes_in_group("Hat")[0].heldItem
 	if  itemHeldByHat != null:
@@ -30,7 +32,7 @@ func interact():
 	pass
 
 func select_is_valid():
-	return !eating
+	return isFull
 
 func select():
 	$SelectionUpscale/SelectionBox.visible = true
@@ -41,7 +43,9 @@ func deselect():
 	pass
 
 func update_glow(heldItem):
-	if heldItem == null:
+	if !isFull:
+		$GPUParticles3D.emitting = false
+	elif heldItem == null:
 		$GPUParticles3D.emitting = false
 	elif heldItem.isReagent:
 		$GPUParticles3D.emitting = true
@@ -87,7 +91,19 @@ func puke():
 	pass
 
 
-
+func should_be_full(beFull):
+	if beFull != isFull:
+		if beFull:
+			$FullnesAnimator.play("Full")
+			isFull = true
+			pass
+		else:
+			$FullnesAnimator.play("Empty")
+			isFull = false
+			itemMemory.clear()
+			$Bubbling.stop()
+			pass
+	pass
 
 
 func _on_item_path_moving_complete(item):
@@ -97,9 +113,6 @@ func _on_item_path_moving_complete(item):
 
 
 func _on_bubbling_finished():
-	print("buble")
-	$Bubbling.volume_db = 0
-	
 	$Bubbles.emitting = true
 	$Bubbling.call_deferred("play")
 	pass # Replace with function body.

@@ -39,7 +39,10 @@ func _ready():
 	$OfferedItemPreview.add_child(broughtItemNode)
 	
 	InputManager.reject_customer.connect(reject_customer)
-
+	
+	var enterSmoke = load("res://particles/cool_puff_of_smoke.tscn").instantiate()
+	enterSmoke.global_position = global_position
+	get_tree().current_scene.add_child(enterSmoke)
 
 func update_animation(is_walking := false) -> void:
 	if is_walking:
@@ -77,3 +80,9 @@ func reject_customer() -> void:
 	if current_player == null:
 		return
 	remove_customer.emit(self)
+
+
+func _exit_tree():
+	var exitBeam = load("res://particles/ufo_beam.tscn").instantiate()
+	exitBeam.global_position = global_position
+	get_tree().current_scene.add_child(exitBeam)

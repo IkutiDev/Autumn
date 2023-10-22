@@ -1,7 +1,9 @@
-[gd_scene load_steps=32 format=3 uid="uid://brbksp2l0t2o3"]
+[gd_scene load_steps=34 format=3 uid="uid://brbksp2l0t2o3"]
 
 [ext_resource type="Script" path="res://entities/pot/pot.gd" id="1_gv73w"]
 [ext_resource type="PackedScene" uid="uid://cxp55nlpryw84" path="res://ktosox/le_item_mover.tscn" id="2_eqkam"]
+[ext_resource type="AudioStream" uid="uid://d2ja5jwrcobgr" path="res://SFX/laser gun 3.wav" id="5_l227g"]
+[ext_resource type="AudioStream" uid="uid://cc3jkh7he40wn" path="res://SFX/laser gun 9.wav" id="6_8n3hf"]
 [ext_resource type="PackedScene" uid="uid://dx4wjxdx8bvt6" path="res://entities/selection_box.tscn" id="19_0j32w"]
 [ext_resource type="AudioStream" uid="uid://dnqjbxp3fvwcq" path="res://SFX/bubbles 3.wav" id="21_l1by7"]
 [ext_resource type="PackedScene" uid="uid://cdk5on28jwoqr" path="res://SFX/multi_3D_player.tscn" id="21_vvou3"]
@@ -211,6 +213,11 @@ mesh = SubResource("CylinderMesh_qaqdt")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.536279, 0)
 shape = SubResource("SphereShape3D_tl50c")
+
+[node name="Spit" parent="." instance=ExtResource("21_vvou3")]
+pitch_scale = 1.1
+playedTracks = Array[Resource]([ExtResource("5_l227g"), ExtResource("6_8n3hf")])
+pitchScaleRange = 0.3
 
 [node name="Output" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

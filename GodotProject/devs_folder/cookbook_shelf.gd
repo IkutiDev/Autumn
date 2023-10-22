@@ -34,5 +34,7 @@ func re_fill_body():
 
 
 func _on_touch_box_body_entered(body):
+	if !$Multi3DPlayer.playing:
+		$Multi3DPlayer.play()
 	$Highlight.emitting = false
 	pass # Replace with function body.

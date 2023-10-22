@@ -61,8 +61,8 @@ func consume(item:RigidBody3D):
 	eating = false
 	var firework = fireworkScene.instantiate()
 	firework.global_position = $Output.global_position
-	add_child(firework)
-	firework.apply_central_impulse(Vector3(1,1,0).rotated(Vector3(0,1,0),randf()*2*PI))
+	get_tree().current_scene.add_child(firework)
+	firework.apply_central_impulse(Vector3(0,5,0).rotated(Vector3(0,1,0),randf()*2*PI))
 	
 	
 	
@@ -85,6 +85,7 @@ func puke():
 	resultItem.global_position = $Output.global_position
 	get_tree().current_scene.add_child(resultItem)
 	resultItem.apply_central_impulse(Vector3(7,0,0).rotated(Vector3(0,1,0),randf()*2*PI))
+	$Spit.play()
 	pass
 
 

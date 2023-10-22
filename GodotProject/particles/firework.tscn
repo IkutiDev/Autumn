@@ -165,6 +165,7 @@ process_material = SubResource("ParticleProcessMaterial_7g8uu")
 draw_pass_1 = SubResource("SphereMesh_eb7hy")
 
 [node name="Explosion" type="GPUParticles3D" parent="."]
+emitting = false
 amount = 40
 lifetime = 1.4
 one_shot = true

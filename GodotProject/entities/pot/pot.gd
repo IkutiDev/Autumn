@@ -56,6 +56,7 @@ func om_nom_nom(item:RigidBody3D):
 	pass
 
 func consume(item:RigidBody3D):
+	$Gulp.play()
 	itemMemory.push_back(item.type)
 	item.queue_free()
 	eating = false
@@ -81,7 +82,7 @@ func puke():
 			result = RecipeManager.allValidRecipies[R]
 
 	itemMemory.clear()
-	var resultItem = RecipeManager.temToItemTypeMap[result].instantiate()
+	var resultItem = RecipeManager.itemToItemTypeMap[result].instantiate()
 	resultItem.global_position = $Output.global_position
 	get_tree().current_scene.add_child(resultItem)
 	resultItem.apply_central_impulse(Vector3(7,0,0).rotated(Vector3(0,1,0),randf()*2*PI))

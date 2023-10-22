@@ -1,9 +1,11 @@
-[gd_scene load_steps=34 format=3 uid="uid://brbksp2l0t2o3"]
+[gd_scene load_steps=36 format=3 uid="uid://brbksp2l0t2o3"]
 
 [ext_resource type="Script" path="res://entities/pot/pot.gd" id="1_gv73w"]
 [ext_resource type="PackedScene" uid="uid://cxp55nlpryw84" path="res://ktosox/le_item_mover.tscn" id="2_eqkam"]
 [ext_resource type="AudioStream" uid="uid://d2ja5jwrcobgr" path="res://SFX/laser gun 3.wav" id="5_l227g"]
 [ext_resource type="AudioStream" uid="uid://cc3jkh7he40wn" path="res://SFX/laser gun 9.wav" id="6_8n3hf"]
+[ext_resource type="AudioStream" uid="uid://drig5dfdh58a2" path="res://SFX/water rocks 9.wav" id="11_yky5c"]
+[ext_resource type="AudioStream" uid="uid://cs7drakj451b2" path="res://SFX/water rocks 13.wav" id="12_r6l40"]
 [ext_resource type="PackedScene" uid="uid://dx4wjxdx8bvt6" path="res://entities/selection_box.tscn" id="19_0j32w"]
 [ext_resource type="AudioStream" uid="uid://dnqjbxp3fvwcq" path="res://SFX/bubbles 3.wav" id="21_l1by7"]
 [ext_resource type="PackedScene" uid="uid://cdk5on28jwoqr" path="res://SFX/multi_3D_player.tscn" id="21_vvou3"]
@@ -248,6 +250,10 @@ one_shot = true
 explosiveness = 0.9
 process_material = SubResource("ParticleProcessMaterial_07u52")
 draw_pass_1 = SubResource("SphereMesh_1it7o")
+
+[node name="Gulp" parent="." instance=ExtResource("21_vvou3")]
+playedTracks = Array[Resource]([ExtResource("11_yky5c"), ExtResource("12_r6l40")])
+pitchScaleRange = 0.2
 
 [node name="FullnesAnimator" type="AnimationPlayer" parent="."]
 libraries = {

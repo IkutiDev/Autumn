@@ -16,7 +16,7 @@ script = ExtResource("1_55ctj")
 main_menu_scene = ExtResource("2_e86d4")
 game_over_scene = ExtResource("3_jipgq")
 gameplay_scene = ExtResource("4_o4tl7")
-customers_to_complete = PackedInt32Array(5, 7, 10, 13, 17, 23, 30, 38, 45, 60)
+customers_to_complete = PackedInt32Array(3, 5, 7, 10, 14, 19, 24, 35, 50, 60)
 customers_to_spawn = Array[PackedScene]([ExtResource("4_j0skb"), ExtResource("5_1fiyh"), ExtResource("6_i0mg6"), ExtResource("6_i0mg6"), ExtResource("6_i0mg6"), ExtResource("6_i0mg6"), ExtResource("6_i0mg6"), ExtResource("6_i0mg6"), ExtResource("6_i0mg6"), ExtResource("6_i0mg6")])
 evening = NodePath("Evening")
 

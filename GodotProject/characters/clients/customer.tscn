@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ctvn7ntfk6sgk"]
+[gd_scene load_steps=16 format=3 uid="uid://ctvn7ntfk6sgk"]
 
 [ext_resource type="Script" path="res://characters/clients/client.gd" id="1_8qodt"]
 [ext_resource type="PackedScene" uid="uid://bx0mw4potkdhs" path="res://entities/items/ingredients/bone.tscn" id="2_3qnql"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://c1cf2yc7l321q" path="res://entities/items/ingredients/junk.tscn" id="4_1hlc0"]
 [ext_resource type="PackedScene" uid="uid://bmflwiopd333r" path="res://entities/items/food/bad_apple.tscn" id="5_nj4yk"]
 [ext_resource type="PackedScene" uid="uid://dmqfpekayuijs" path="res://entities/items/food/croissant.tscn" id="6_j054s"]
-[ext_resource type="Texture2D" uid="uid://d1sxran4o0fan" path="res://entities/items/food/apple.png" id="9_1r7wp"]
 
 [sub_resource type="Animation" id="Animation_vmxam"]
 resource_name = "Armature_002|mixamo_com|Layer0"
@@ -2121,12 +2120,13 @@ albedo_color = Color(0, 0.588235, 0.588235, 0.462745)
 material = SubResource("StandardMaterial3D_otba3")
 size = Vector3(0.4, 0.4, 0.4)
 
-[node name="Customer" type="Node3D" node_paths=PackedStringArray("animation_player") groups=["Customer"]]
+[node name="Customer" type="Node3D" node_paths=PackedStringArray("animation_player", "desired_item_sprite") groups=["Customer"]]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 script = ExtResource("1_8qodt")
 allItemsOffered = Array[PackedScene]([ExtResource("2_3qnql"), ExtResource("3_417wa"), ExtResource("4_1hlc0")])
 allItemsWanted = Array[PackedScene]([ExtResource("5_nj4yk"), ExtResource("6_j054s")])
 animation_player = NodePath("all in one_ client/AnimationPlayer")
+desired_item_sprite = NodePath("DesiredItemPreview/Sprite3D")
 
 [node name="all in one_ client" parent="." instance=ExtResource("2_xxc38")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
@@ -2260,7 +2260,6 @@ texture = ExtResource("3_etya4")
 transform = Transform3D(0.275, 0, 0, 0, 0.275, 0, 0, 0, 0.275, 0.0117731, -0.00984669, -0.00183201)
 billboard = 2
 render_priority = 1
-texture = ExtResource("9_1r7wp")
 
 [node name="OfferedItemPreview" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.77858e-08, 0.690445, -0.581902)

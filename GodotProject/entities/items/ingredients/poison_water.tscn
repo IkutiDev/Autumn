@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dy1tqjucclw1o"]
+[gd_scene load_steps=5 format=3 uid="uid://dy1tqjucclw1o"]
 
 [ext_resource type="PackedScene" uid="uid://kqu0naaa3i62" path="res://entities/items/item_base.tscn" id="1_cyi1o"]
 [ext_resource type="PackedScene" uid="uid://bj41wkhc8ixlw" path="res://entities/items/ingredients/wiaderko.glb" id="2_j5xbb"]
+[ext_resource type="Texture2D" uid="uid://cs3ybxodh4vu8" path="res://items_images/wiaderko.png" id="2_nw77d"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_6nhrc"]
 
 [node name="PoisonWater" instance=ExtResource("1_cyi1o")]
 type = 4
+item_image = ExtResource("2_nw77d")
 
 [node name="MeshInstance3D" parent="." index="2"]
 transform = Transform3D(0.356024, 0.134839, 9.07997e-09, 0, -8.08661e-09, 0.285, 0.379008, -0.126662, -8.52934e-09, 0, 0.188553, 0)

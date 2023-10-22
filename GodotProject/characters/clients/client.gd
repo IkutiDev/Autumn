@@ -16,6 +16,7 @@ var broughtItemNode
 
 @export_group("References")
 @export var animation_player : AnimationPlayer
+@export var desired_item_sprite : Sprite3D
 
 var current_player : Player = null
 
@@ -30,7 +31,8 @@ func _ready():
 	print(desiredItemNode,broughtItemNode)
 	broughtItemNode.freeze = true
 	desiredItemNode.freeze = true
-	$DesiredItemPreview.add_child(desiredItemNode)
+	#$DesiredItemPreview.add_child(desiredItemNode)
+	desired_item_sprite.texture = desiredItemNode.item_image
 	$OfferedItemPreview.add_child(broughtItemNode)
 	
 	InputManager.reject_customer.connect(reject_customer)

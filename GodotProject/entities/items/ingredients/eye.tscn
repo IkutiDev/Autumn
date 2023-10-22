@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnwe2ryaueoac"]
+[gd_scene load_steps=6 format=3 uid="uid://cnwe2ryaueoac"]
 
 [ext_resource type="PackedScene" uid="uid://kqu0naaa3i62" path="res://entities/items/item_base.tscn" id="1_u54m7"]
+[ext_resource type="Texture2D" uid="uid://cqo4idgdho2k6" path="res://items_images/oko.png" id="2_8thcs"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_wvi8c"]
 radius = 0.25
@@ -16,6 +17,7 @@ height = 0.25
 
 [node name="Eye" instance=ExtResource("1_u54m7")]
 type = 7
+item_image = ExtResource("2_8thcs")
 
 [node name="MeshInstance3D" parent="." index="2"]
 mesh = SubResource("SphereMesh_wvi8c")
@@ -23,3 +25,6 @@ mesh = SubResource("SphereMesh_wvi8c")
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.149744)
 mesh = SubResource("SphereMesh_oe7fj")
+
+[node name="SelectionBox" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.2, 0)

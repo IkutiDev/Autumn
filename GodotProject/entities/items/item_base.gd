@@ -7,7 +7,7 @@ PumpkinSeed, WormSeed, MushroomSeed,
 Junk}
 
 @export var type : ITEM_TYPE
-
+@export var item_image : Texture2D
 @export var isReagent = true
 @export var isSeed = false
 

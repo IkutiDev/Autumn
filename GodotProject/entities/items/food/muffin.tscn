@@ -1,10 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://bcravt3mjleqo"]
+[gd_scene load_steps=4 format=3 uid="uid://bcravt3mjleqo"]
 
 [ext_resource type="PackedScene" uid="uid://kqu0naaa3i62" path="res://entities/items/item_base.tscn" id="1_wqsxa"]
+[ext_resource type="Texture2D" uid="uid://ch1qc41n6xni8" path="res://items_images/babeczka.png" id="2_boywx"]
 [ext_resource type="PackedScene" uid="uid://dhf8kdn1teeh7" path="res://entities/items/food/babeczka.glb" id="2_r566g"]
 
 [node name="Muffin" instance=ExtResource("1_wqsxa")]
 type = 8
+item_image = ExtResource("2_boywx")
 isReagent = false
 
 [node name="MeshInstance3D" parent="." index="2"]

@@ -1,10 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://dmqfpekayuijs"]
+[gd_scene load_steps=4 format=3 uid="uid://dmqfpekayuijs"]
 
 [ext_resource type="PackedScene" uid="uid://kqu0naaa3i62" path="res://entities/items/item_base.tscn" id="1_8l06e"]
 [ext_resource type="PackedScene" uid="uid://df46c3hmxp3nu" path="res://entities/items/food/rogal.glb" id="2_ce8ou"]
+[ext_resource type="Texture2D" uid="uid://d0xneg5k3575x" path="res://items_images/rogal.png" id="2_kiclr"]
 
 [node name="Croissant" instance=ExtResource("1_8l06e")]
 type = 14
+item_image = ExtResource("2_kiclr")
 isReagent = false
 
 [node name="MeshInstance3D" parent="." index="2"]

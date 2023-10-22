@@ -47,4 +47,9 @@ func _on_timer_timeout():
 	RecipeManager.call_deferred("item_type_unlocked",0)
 	RecipeManager.call_deferred("item_type_unlocked",4)
 	RecipeManager.call_deferred("item_type_unlocked",5)
+	RecipeManager.call_deferred("item_type_unlocked", ItemBase.ITEM_TYPE.Pumpkin)
+	RecipeManager.call_deferred("item_type_unlocked", ItemBase.ITEM_TYPE.Worm)
+	RecipeManager.call_deferred("item_type_unlocked", ItemBase.ITEM_TYPE.Mushroom)
+	RecipeManager.call_deferred("item_type_unlocked", ItemBase.ITEM_TYPE.Mandrake)
+	RecipeManager.call_deferred("item_type_unlocked", ItemBase.ITEM_TYPE.Eye)
 	pass # Replace with function body.

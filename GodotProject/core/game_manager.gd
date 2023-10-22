@@ -38,6 +38,13 @@ func end_night():
 	if customers_to_spawn.size() > day_index + 1:
 		day_index += 1
 		evening.howMuchLasts += 20
+	if day_index == 1:
+		RecipeManager.call_deferred("item_type_unlocked",ItemBase.ITEM_TYPE.Worm)
+		RecipeManager.call_deferred("item_type_unlocked",ItemBase.ITEM_TYPE.Pumpkin)
+		RecipeManager.call_deferred("item_type_unlocked",ItemBase.ITEM_TYPE.Mushroom)
+	if day_index == 2:
+		RecipeManager.call_deferred("item_type_unlocked",ItemBase.ITEM_TYPE.Mandrake)
+		RecipeManager.call_deferred("item_type_unlocked",ItemBase.ITEM_TYPE.Eye)
 	current_day_customers_done = 0
 	current_day_customers_spawned = 0
 	$Night._stop()

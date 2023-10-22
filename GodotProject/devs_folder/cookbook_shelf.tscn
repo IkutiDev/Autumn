@@ -1,39 +1,55 @@
-[gd_scene load_steps=7 format=3 uid="uid://hj2848tf8yp0"]
+[gd_scene load_steps=6 format=3 uid="uid://hj2848tf8yp0"]
 
+[ext_resource type="Script" path="res://devs_folder/cookbook_shelf.gd" id="1_075dt"]
 [ext_resource type="PackedScene" uid="uid://ccksv7xyk270y" path="res://devs_folder/touch_box.tscn" id="1_a8l0s"]
-[ext_resource type="Texture2D" uid="uid://c7w7fbjvnq0hp" path="res://icon.png" id="2_tbs8o"]
+[ext_resource type="PackedScene" uid="uid://by70pum28hewx" path="res://entities/highlight.tscn" id="2_0s61k"]
+[ext_resource type="Texture2D" uid="uid://cc8p6bg6m5jff" path="res://items_images/pergamin.png" id="2_imt33"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_xdttp"]
-size = Vector3(1, 2, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v161s"]
-albedo_color = Color(0.592157, 0.290196, 0, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_wsuwt"]
-material = SubResource("StandardMaterial3D_v161s")
-size = Vector3(0.5, 2, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_2hebk"]
-size = Vector2(1.765, 0.77)
+[sub_resource type="BoxShape3D" id="BoxShape3D_kewy2"]
+size = Vector3(2, 2, 2)
 
 [node name="CookbookShelf" type="Node3D"]
+script = ExtResource("1_075dt")
+
+[node name="Highlight" parent="." instance=ExtResource("2_0s61k")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.0349877, 0)
 
 [node name="TouchBox" parent="." instance=ExtResource("1_a8l0s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TouchBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("BoxShape3D_xdttp")
+shape = SubResource("BoxShape3D_kewy2")
 
-[node name="Sprite3D" type="Sprite3D" parent="TouchBox"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.168784, 2.22466, 1.67824)
-billboard = 2
-texture = ExtResource("2_tbs8o")
+[node name="CanvasLayer" type="CanvasLayer" parent="TouchBox"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("BoxMesh_wsuwt")
+[node name="ColorRectBackground" type="TextureRect" parent="TouchBox/CanvasLayer"]
+anchors_preset = -1
+anchor_left = -0.108333
+anchor_right = -0.108333
+anchor_bottom = 0.113889
+offset_left = 168.0
+offset_top = -45.0
+offset_right = 1244.0
+offset_bottom = 1033.0
+texture = ExtResource("2_imt33")
+expand_mode = 4
+metadata/_edit_use_anchors_ = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
-transform = Transform3D(4.37114e-08, 1, -8.74228e-08, 1, -4.37114e-08, 0, -3.82137e-15, -8.74228e-08, -1, 0.260349, 0, 0)
-mesh = SubResource("PlaneMesh_2hebk")
+[node name="TextBody" type="RichTextLabel" parent="TouchBox/CanvasLayer/ColorRectBackground"]
+layout_mode = 0
+offset_left = 189.0
+offset_top = 240.0
+offset_right = 767.0
+offset_bottom = 975.0
+bbcode_enabled = true
+
+[node name="TextTitle" type="Label" parent="TouchBox/CanvasLayer/ColorRectBackground"]
+layout_mode = 0
+offset_left = 389.0
+offset_top = 184.0
+offset_right = 555.0
+offset_bottom = 242.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "RECIPIES"
+
+[connection signal="body_entered" from="TouchBox" to="." method="_on_touch_box_body_entered"]

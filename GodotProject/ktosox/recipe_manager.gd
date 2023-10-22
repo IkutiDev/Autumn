@@ -44,7 +44,9 @@ var allValidRecipies = {
 	[ItemBase.ITEM_TYPE.Bone,ItemBase.ITEM_TYPE.Mushroom,ItemBase.ITEM_TYPE.Mandrake] : ItemBase.ITEM_TYPE.DevilPie,
 }
 
+var itemToItemTypeMap = {}
 
+@export var allRelevantItems : Array[PackedScene] = []
 
 @onready var recipiesToUnlock = allValidRecipies.duplicate() # each time a new resource is unlocked all copies of it are removed key
 
@@ -54,6 +56,9 @@ var unlockedFoods = []
 
 
 func _ready():
-
+	for A in allRelevantItems:
+		itemToItemTypeMap[A.instantiate().type] = A
+	item_type_unlocked(4)
+	item_type_unlocked(5)
 	pass # Replace with function body.
 

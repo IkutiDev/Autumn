@@ -1,24 +1,7 @@
-[gd_scene load_steps=49 format=3 uid="uid://brbksp2l0t2o3"]
+[gd_scene load_steps=32 format=3 uid="uid://brbksp2l0t2o3"]
 
 [ext_resource type="Script" path="res://entities/pot/pot.gd" id="1_gv73w"]
 [ext_resource type="PackedScene" uid="uid://cxp55nlpryw84" path="res://ktosox/le_item_mover.tscn" id="2_eqkam"]
-[ext_resource type="PackedScene" uid="uid://b0pg3pm2etwqr" path="res://entities/items/ingredients/apple.tscn" id="2_rlkwm"]
-[ext_resource type="PackedScene" uid="uid://bx0mw4potkdhs" path="res://entities/items/ingredients/bone.tscn" id="3_mf85v"]
-[ext_resource type="PackedScene" uid="uid://cnwe2ryaueoac" path="res://entities/items/ingredients/eye.tscn" id="4_j6qtj"]
-[ext_resource type="PackedScene" uid="uid://c1cf2yc7l321q" path="res://entities/items/ingredients/junk.tscn" id="5_5t8if"]
-[ext_resource type="PackedScene" uid="uid://bonbmdplacwpe" path="res://entities/items/ingredients/mandrake.tscn" id="6_qsg72"]
-[ext_resource type="PackedScene" uid="uid://qdsgjshml1ww" path="res://entities/items/ingredients/mushroom.tscn" id="7_ilsg3"]
-[ext_resource type="PackedScene" uid="uid://dy1tqjucclw1o" path="res://entities/items/ingredients/poison_water.tscn" id="8_rouxf"]
-[ext_resource type="PackedScene" uid="uid://difo4hbacdgvc" path="res://entities/items/ingredients/pumpkin.tscn" id="9_bnejn"]
-[ext_resource type="PackedScene" uid="uid://kjclwxaxqsfl" path="res://entities/items/ingredients/worm.tscn" id="10_8sl03"]
-[ext_resource type="PackedScene" uid="uid://bmflwiopd333r" path="res://entities/items/food/bad_apple.tscn" id="11_6qpca"]
-[ext_resource type="PackedScene" uid="uid://dmqfpekayuijs" path="res://entities/items/food/croissant.tscn" id="12_6ne7o"]
-[ext_resource type="PackedScene" uid="uid://k323xfyk82mu" path="res://entities/items/food/devil_pie.tscn" id="13_x3j8i"]
-[ext_resource type="PackedScene" uid="uid://cwn2idfis3fwv" path="res://entities/items/food/eclair.tscn" id="14_bmix3"]
-[ext_resource type="PackedScene" uid="uid://djl5hbaimwhr5" path="res://entities/items/food/eye_pie.tscn" id="15_umpqf"]
-[ext_resource type="PackedScene" uid="uid://bcravt3mjleqo" path="res://entities/items/food/muffin.tscn" id="16_6jvrc"]
-[ext_resource type="PackedScene" uid="uid://bay7vrmt1ora3" path="res://entities/items/food/mushroom_jelly.tscn" id="17_b7lej"]
-[ext_resource type="PackedScene" uid="uid://y852j31wdn2u" path="res://entities/items/food/spaghetti.tscn" id="18_yy6gd"]
 [ext_resource type="PackedScene" uid="uid://dx4wjxdx8bvt6" path="res://entities/selection_box.tscn" id="19_0j32w"]
 [ext_resource type="AudioStream" uid="uid://dnqjbxp3fvwcq" path="res://SFX/bubbles 3.wav" id="21_l1by7"]
 [ext_resource type="PackedScene" uid="uid://cdk5on28jwoqr" path="res://SFX/multi_3D_player.tscn" id="21_vvou3"]
@@ -207,7 +190,6 @@ collision_mask = 8
 freeze = true
 freeze_mode = 1
 script = ExtResource("1_gv73w")
-allRelevantItems = Array[PackedScene]([ExtResource("2_rlkwm"), ExtResource("3_mf85v"), ExtResource("4_j6qtj"), ExtResource("5_5t8if"), ExtResource("6_qsg72"), ExtResource("7_ilsg3"), ExtResource("8_rouxf"), ExtResource("9_bnejn"), ExtResource("10_8sl03"), ExtResource("11_6qpca"), ExtResource("12_6ne7o"), ExtResource("13_x3j8i"), ExtResource("14_bmix3"), ExtResource("15_umpqf"), ExtResource("16_6jvrc"), ExtResource("17_b7lej"), ExtResource("18_yy6gd"), ExtResource("5_5t8if")])
 
 [node name="SelectionUpscale" type="Node3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)

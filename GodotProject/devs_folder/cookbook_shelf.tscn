@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://hj2848tf8yp0"]
+[gd_scene load_steps=11 format=3 uid="uid://hj2848tf8yp0"]
 
 [ext_resource type="Script" path="res://devs_folder/cookbook_shelf.gd" id="1_075dt"]
 [ext_resource type="PackedScene" uid="uid://ccksv7xyk270y" path="res://devs_folder/touch_box.tscn" id="1_a8l0s"]
@@ -7,9 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://cdk5on28jwoqr" path="res://SFX/multi_3D_player.tscn" id="3_cx4ow"]
 [ext_resource type="AudioStream" uid="uid://gatw5gvs6ls" path="res://SFX/book flopping around 2.wav" id="4_7ig1s"]
 [ext_resource type="AudioStream" uid="uid://cmm4ruiobfonb" path="res://SFX/book flopping around 7.wav" id="5_5h3rk"]
+[ext_resource type="FontFile" uid="uid://beeunwf4egq3u" path="res://ktosox/Amperzand.ttf" id="8_vpx08"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kewy2"]
 size = Vector3(2, 2, 2)
+
+[sub_resource type="FontVariation" id="FontVariation_4vchc"]
+base_font = ExtResource("8_vpx08")
 
 [node name="CookbookShelf" type="Node3D"]
 script = ExtResource("1_075dt")
@@ -44,20 +48,22 @@ metadata/_edit_use_anchors_ = true
 
 [node name="TextBody" type="RichTextLabel" parent="TouchBox/CanvasLayer/ColorRectBackground"]
 layout_mode = 0
-offset_left = 189.0
-offset_top = 240.0
+offset_left = 187.0
+offset_top = 261.0
 offset_right = 767.0
 offset_bottom = 975.0
+theme_override_fonts/normal_font = SubResource("FontVariation_4vchc")
 bbcode_enabled = true
 
 [node name="TextTitle" type="Label" parent="TouchBox/CanvasLayer/ColorRectBackground"]
 layout_mode = 0
-offset_left = 389.0
+offset_left = 388.999
 offset_top = 184.0
-offset_right = 555.0
-offset_bottom = 242.0
+offset_right = 667.999
+offset_bottom = 251.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 40
-text = "RECIPIES"
+theme_override_fonts/font = ExtResource("8_vpx08")
+theme_override_font_sizes/font_size = 64
+text = "RECIPES"
 
 [connection signal="body_entered" from="TouchBox" to="." method="_on_touch_box_body_entered"]

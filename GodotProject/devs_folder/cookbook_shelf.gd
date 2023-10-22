@@ -5,6 +5,8 @@ var allKnownRecipies = []
 
 func _ready():
 	RecipeManager.connect("unlocked_recipe",add_recipie)
+	RecipeManager.item_type_unlocked(4) # for testing
+	RecipeManager.item_type_unlocked(5) # for testing
 
 
 func add_recipie(recipieArray):

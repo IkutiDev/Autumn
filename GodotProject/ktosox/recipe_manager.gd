@@ -33,13 +33,13 @@ func item_type_unlocked(resourceType : ItemBase.ITEM_TYPE): # called when item t
 
 var allValidRecipies = {
 	[ItemBase.ITEM_TYPE.Apple,ItemBase.ITEM_TYPE.Water,ItemBase.ITEM_TYPE.Water] : ItemBase.ITEM_TYPE.BadApple,
-	[ItemBase.ITEM_TYPE.Mushroom,ItemBase.ITEM_TYPE.Mushroom,ItemBase.ITEM_TYPE.Water] : ItemBase.ITEM_TYPE.MushroomJelly,
-	[ItemBase.ITEM_TYPE.Bone,ItemBase.ITEM_TYPE.Water,ItemBase.ITEM_TYPE.Worm] : ItemBase.ITEM_TYPE.Muffin,
-	[ItemBase.ITEM_TYPE.Worm,ItemBase.ITEM_TYPE.Worm,ItemBase.ITEM_TYPE.Eye] : ItemBase.ITEM_TYPE.Spaghetti,
 	[ItemBase.ITEM_TYPE.Bone,ItemBase.ITEM_TYPE.Water,ItemBase.ITEM_TYPE.Apple] : ItemBase.ITEM_TYPE.Croissant,
 	[ItemBase.ITEM_TYPE.Bone,ItemBase.ITEM_TYPE.Water,ItemBase.ITEM_TYPE.Pumpkin] : ItemBase.ITEM_TYPE.Croissant,
-	[ItemBase.ITEM_TYPE.Bone,ItemBase.ITEM_TYPE.Water,ItemBase.ITEM_TYPE.Mandrake] : ItemBase.ITEM_TYPE.Croissant,
+	[ItemBase.ITEM_TYPE.Mushroom,ItemBase.ITEM_TYPE.Mushroom,ItemBase.ITEM_TYPE.Water] : ItemBase.ITEM_TYPE.MushroomJelly,
+	[ItemBase.ITEM_TYPE.Bone,ItemBase.ITEM_TYPE.Water,ItemBase.ITEM_TYPE.Worm] : ItemBase.ITEM_TYPE.Muffin,
 	[ItemBase.ITEM_TYPE.Bone,ItemBase.ITEM_TYPE.Bone,ItemBase.ITEM_TYPE.Pumpkin] : ItemBase.ITEM_TYPE.Eclair,
+	[ItemBase.ITEM_TYPE.Bone,ItemBase.ITEM_TYPE.Water,ItemBase.ITEM_TYPE.Mandrake] : ItemBase.ITEM_TYPE.Croissant,
+	[ItemBase.ITEM_TYPE.Worm,ItemBase.ITEM_TYPE.Worm,ItemBase.ITEM_TYPE.Eye] : ItemBase.ITEM_TYPE.Spaghetti,
 	[ItemBase.ITEM_TYPE.Bone,ItemBase.ITEM_TYPE.Bone,ItemBase.ITEM_TYPE.Eye] : ItemBase.ITEM_TYPE.EyePie,
 	[ItemBase.ITEM_TYPE.Bone,ItemBase.ITEM_TYPE.Mushroom,ItemBase.ITEM_TYPE.Mandrake] : ItemBase.ITEM_TYPE.DevilPie,
 }

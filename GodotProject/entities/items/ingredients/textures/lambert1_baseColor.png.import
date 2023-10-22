@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvqpxuyoremn6"
-path.s3tc="res://.godot/imported/ciasto.png-76d005a49b379e704e5dbb18dbccd26d.s3tc.ctex"
+uid="uid://nacp6fhwxkjd"
+path.s3tc="res://.godot/imported/lambert1_baseColor.png-789e542684cef01c1fc0fbdb8ec75ed3.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://items_images/ciasto.png"
-dest_files=["res://.godot/imported/ciasto.png-76d005a49b379e704e5dbb18dbccd26d.s3tc.ctex"]
+source_file="res://entities/items/ingredients/textures/lambert1_baseColor.png"
+dest_files=["res://.godot/imported/lambert1_baseColor.png-789e542684cef01c1fc0fbdb8ec75ed3.s3tc.ctex"]
 
 [params]
 

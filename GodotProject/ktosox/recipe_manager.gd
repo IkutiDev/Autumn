@@ -58,7 +58,9 @@ var unlockedFoods = []
 func _ready():
 	for A in allRelevantItems:
 		itemToItemTypeMap[A.instantiate().type] = A
-	item_type_unlocked(4)
-	item_type_unlocked(5)
+
 	pass # Replace with function body.
+
+
+
 

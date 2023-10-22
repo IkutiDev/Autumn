@@ -1,0 +1,99 @@
+[gd_scene load_steps=3 format=3 uid="uid://bog3168d3k4mi"]
+
+[ext_resource type="Script" path="res://world/gameplay_ui.gd" id="1_jcptg"]
+[ext_resource type="Texture2D" uid="uid://bd5nm3xj27yu3" path="res://pixel_witch.png" id="2_4i7tm"]
+
+[node name="CanvasLayer" type="CanvasLayer" node_paths=PackedStringArray("customers_done_label", "customers_min", "current_cycle_name", "current_cycle_time")]
+script = ExtResource("1_jcptg")
+customers_done_label = NodePath("TextureRect/Label")
+customers_min = NodePath("TextureRect/Label3")
+current_cycle_name = NodePath("TextureRect2/Label4")
+current_cycle_time = NodePath("TextureRect2/Label")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -298.0
+offset_right = 1466.0
+grow_vertical = 0
+texture = ExtResource("2_4i7tm")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Label4" type="Label" parent="TextureRect"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 145.0
+offset_right = 359.0
+offset_bottom = 255.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 51
+text = "Customers"
+
+[node name="Label" type="Label" parent="TextureRect"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 203.0
+offset_right = 139.0
+offset_bottom = 313.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 66
+text = "0"
+horizontal_alignment = 2
+
+[node name="Label2" type="Label" parent="TextureRect"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 203.0
+offset_right = 176.0
+offset_bottom = 313.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 66
+text = "/"
+
+[node name="Label3" type="Label" parent="TextureRect"]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 203.0
+offset_right = 275.0
+offset_bottom = 313.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 66
+text = "0"
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -298.0
+offset_top = -298.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("2_4i7tm")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Label4" type="Label" parent="TextureRect2"]
+layout_mode = 0
+offset_left = -46.0
+offset_top = 145.0
+offset_right = 359.0
+offset_bottom = 255.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 51
+text = "Afternoon"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="TextureRect2"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 203.0
+offset_right = 283.0
+offset_bottom = 313.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 66
+text = "2:00"
+horizontal_alignment = 1

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cpigqijd30sha"]
+[gd_scene load_steps=8 format=3 uid="uid://cpigqijd30sha"]
 
 [ext_resource type="Script" path="res://core/game_manager.gd" id="1_55ctj"]
 [ext_resource type="PackedScene" uid="uid://b4g1xr6srv8yo" path="res://GUI/main_menu.tscn" id="2_e86d4"]
 [ext_resource type="PackedScene" uid="uid://dtbmjdiy51vqd" path="res://world/world.tscn" id="3_p11pg"]
+[ext_resource type="PackedScene" uid="uid://ctvn7ntfk6sgk" path="res://characters/clients/customer.tscn" id="4_j0skb"]
 [ext_resource type="Script" path="res://core/Afternoon.gd" id="4_jyggy"]
 [ext_resource type="Script" path="res://core/Evening.gd" id="5_i2vmh"]
 [ext_resource type="Script" path="res://core/Night.gd" id="6_uxxg4"]
@@ -11,18 +12,23 @@
 script = ExtResource("1_55ctj")
 main_menu_scene = ExtResource("2_e86d4")
 gameplay_scene = ExtResource("3_p11pg")
+customers_to_complete = PackedInt32Array(5, 7, 10, 13, 17, 23, 30, 38, 45, 60)
+customers_to_spawn = Array[PackedScene]([ExtResource("4_j0skb")])
 
 [node name="Afternoon" type="Node" parent="."]
 script = ExtResource("4_jyggy")
-howMuchLasts = 4
+cycle_name = "Afternoon"
+howMuchLasts = 2
 nextCycle = NodePath("../Evening")
 
 [node name="Evening" type="Node" parent="."]
 script = ExtResource("5_i2vmh")
-howMuchLasts = 7
+cycle_name = "Evening"
+howMuchLasts = 120
 nextCycle = NodePath("../Night")
 
 [node name="Night" type="Node" parent="."]
 script = ExtResource("6_uxxg4")
-howMuchLasts = 4
+cycle_name = "Night"
+howMuchLasts = 1
 nextCycle = NodePath("../Afternoon")

@@ -1,7 +1,21 @@
 extends Node
 
+signal evening_starts()
+signal night_summary()
+
 @export var main_menu_scene : PackedScene
+@export var game_over_scene : PackedScene
 @export var gameplay_scene : PackedScene
+
+@export var customers_to_complete : PackedInt32Array
+@export var customers_to_spawn : Array[PackedScene]
+@export var evening : DayCycle
+
+var day_index := 0
+var current_day_cycle : DayCycle
+
+var current_day_customers_done := 0
+var total_customers_done := 0
 
 func change_to_gameplay_scene() -> void:
 	get_tree().change_scene_to_packed(gameplay_scene)
@@ -9,6 +23,8 @@ func change_to_gameplay_scene() -> void:
 func change_to_main_menu_scene() -> void:
 	get_tree().change_scene_to_packed(main_menu_scene)
 
+func change_to_game_over_scene() -> void:
+	get_tree().change_scene_to_packed(game_over_scene)
 
 func end_night():
 	$Night._stop()
@@ -16,6 +32,15 @@ func end_night():
 
 func _ready():
 	$Afternoon._start()
+
+func night_ended() -> void:
+	if current_day_customers_done < customers_to_complete[day_index]:
+		change_to_game_over_scene()
+		return
+	if customers_to_spawn.size() > day_index + 1:
+		day_index += 1
+		evening.howMuchLasts += 20
+	current_day_customers_done = 0
 
 # manage day cycle
 

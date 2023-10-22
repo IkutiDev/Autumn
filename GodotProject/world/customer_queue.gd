@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var customer_scene : PackedScene
+#@export var customer_scene : PackedScene
 @export var customer_speed := 1.0
 @export var customer_spawn_time := 10.0
 @export var customer_distance := 0.1
@@ -12,13 +12,20 @@ extends Node3D
 var active_customers : Array[PathFollow3D]
 var leaving_customers : Array[PathFollow3D]
 var customer_spawn_timer := 0.0
+
+var allow_spawn := false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	customer_spawn_timer = customer_spawn_time
-
+	GameManager.night_summary.connect(clear_all_customers)
+	GameManager.evening_starts.connect(start_spawning_customers)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
+	if not allow_spawn:
+		return
 	
 	for i in active_customers.size():
 		var customer = active_customers[i]
@@ -48,7 +55,7 @@ func _process(delta):
 			path3D.add_child(path_follower)
 			path_follower.loop = false
 			path_follower.rotation_mode = PathFollow3D.ROTATION_Y
-			var customer = customer_scene.instantiate()
+			var customer = GameManager.customers_to_spawn[GameManager.day_index].instantiate()
 			path_follower.add_child(customer)
 			customer.remove_customer.connect(remove_customer)
 			active_customers.append(path_follower)
@@ -62,3 +69,15 @@ func remove_customer(customer : Node3D) -> void:
 
 func delete_customer(customer : PathFollow3D) -> void:
 	customer.queue_free()
+
+func clear_all_customers() -> void:
+	active_customers.clear()
+	leaving_customers.clear()
+	for child in path3D.get_children():
+		child.queue_free()
+	for child in leaving_path3D.get_children():
+		child.queue_free()
+	allow_spawn = false
+
+func start_spawning_customers() -> void:
+	allow_spawn = true

@@ -50,6 +50,8 @@ func give_gift():
 	broughtItemNode.global_position = $ItemSpawnPoint.global_position
 	broughtItemNode.freeze = false
 	remove_customer.emit(self)
+	GameManager.current_day_customers_done += 1
+	GameManager.total_customers_done += 1
 	#$AnimationPlayer.play("exit")
 	pass
 

@@ -1,6 +1,7 @@
 extends Node
 class_name DayCycle
 
+@export var cycle_name : String
 @export var howMuchLasts : int
 
 @onready var cycleTimer : Timer
@@ -18,6 +19,7 @@ func _ready():
 
 func _start():
 	cycleTimer.start()
+	GameManager.current_day_cycle = self
 	start()
 	pass
 
